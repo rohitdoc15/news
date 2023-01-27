@@ -5,6 +5,7 @@
 <head>
     <script src="{% static '/js/htmx.min.js' %}"></script>
     <script src="{% static '/js/blink.js' %}"></script>
+
     
     {% tailwind_css %}
  <style>.glow {
@@ -28,19 +29,17 @@
 
 
 <div class="flex flex-col justify-center items-center mt-72">
-    <input  class="flex flex-col justify-center inset-8 w-1/2" type="text" name="q"
+    <input  class="flex flex-col justify-center inset-8 w-1/2 bg-slate-800 border-white hover:bg-slate-600 rounded-lg placeholder-white shadow-md shadow-white text-white focus:ring focus:ring-white focus:text-md  "  type="text" name="q"
     hx-post="check_channel/"
     hx-trigger="keyup "
     hx-target="#search-results"
-    placeholder="Search..."
+    placeholder= "Search..."
 >
+<div id="search-results" class="text-white px-10 pb-5 mt-5 mb-5"></div>
+</div >
 
 
-<div  id="search-results" > </div >
 
-
-
-</div>
 
 
 </body>
