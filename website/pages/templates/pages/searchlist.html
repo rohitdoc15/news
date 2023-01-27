@@ -1,0 +1,21 @@
+{% load static %}
+<head>
+    <script src="{% static '/js/htmx.min.js' %}"></script>
+    <script src="{% static '/js/blink.js' %}"></script>
+</head>
+
+
+
+
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+{% for i in results  %}
+
+
+<a  hx-post="{% static 'function/clouds/' %}{{ i }}.svg"
+    hx-target="#search-results"
+     > {{i}}
+
+</a>
+
+
+{% endfor %}
