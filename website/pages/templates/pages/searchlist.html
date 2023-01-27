@@ -10,12 +10,13 @@
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 {% for i in results  %}
 
-
+<div class="row flex-col w-80 border-b-slate-700 border-b-2">
 <a  hx-post="{% static 'function/clouds/' %}{{ i }}.svg"
     hx-target="#search-results"
      > {{i}}
 
 </a>
+</div>
 
 
 {% endfor %}
