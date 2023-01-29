@@ -24,8 +24,10 @@ def check_channel(request):
     else:
         return HttpResponse("")
 
+def channel_name(request):
+    channel = request.POST.get('name')
+    context = {'channel': channel}
+    print(channel)
 
-    # if channel in list(channels):
-    #     return HttpResponse(channel)
-    # else:
-    #     return HttpResponse("channel not found")
+
+    return render(request, 'pages/channelname.html' , context)

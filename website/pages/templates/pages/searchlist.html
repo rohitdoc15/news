@@ -1,7 +1,7 @@
 {% load static %}
 <head>
     <script src="{% static '/js/htmx.min.js' %}"></script>
-    <script src="{% static '/js/blink.js' %}"></script>
+
 </head>
 
 
@@ -10,12 +10,23 @@
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 {% for i in results  %}
 
+<div  class=" m-1 p-1  h-9 rounded-t-none border-b-2 border-dotted border-b-slate-900 hover:bg-slate-900">
+<form  hx-post="{% static 'function/clouds/' %}{{ i }}.svg"
+    hx-target="#top"
+    hx-include="[name='name']">
 
-<a  hx-post="{% static 'function/clouds/' %}{{ i }}.svg"
-    hx-target="#search-results"
-     > {{i}}
 
-</a>
 
+     <div class="flex hover:cursor-pointer  "  >
+        
+        <img  class=" h-4 flex-initial w-auto items-center my-2 mr-3 " src="{% static 'function/logos/' %}{{ i }}.jpg" alt="">
+        <input class="hover:cursor-pointer" type="submit" value="{{i}}" name="name">
+
+
+
+    </div>
+
+</form>
+</div>
 
 {% endfor %}

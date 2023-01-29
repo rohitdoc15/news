@@ -10,6 +10,7 @@ urlpatterns = [
 htmx_url_patterns = [
          path('check_channel/', views.check_channel , name='check_channel'),
          path('searchlist/', views.check_channel , name='searchlist'),
+         path('channel/',views.channel_name, name='channel_name'),
 ]
 
 
