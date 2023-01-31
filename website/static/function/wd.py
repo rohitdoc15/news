@@ -1,5 +1,5 @@
 import PIL.Image
-from wordcloud import WordCloud, STOPWORDS , ImageColorGenerator
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import matplotlib.pyplot as plt
 from collections import Counter
 import numpy as np
@@ -48,13 +48,17 @@ def update(channel):
         f.write(svg_image)
 
 
-
-
-channels = {'lallantop': 'UCx8Z14PpntdaxCt2hakbQLQ', 'aajtak': 'UCt4t-jeY85JegMlZ-E5UWtA' , 'abpnews': 'UCRWFSbif-RFENbBrSiez1DA','altnews':'UCdDjoZAtt6PjQKAbr2FTOAQ' , 'indiatoday':'UCYPvAwZP8pZhSMW8qs7cVCw','indiatv':'UCttspZesZIDEwwpVIgoZtWQ','ndtv':'UC9CYT9gSNLevX5ey2_6CK0Q','theprint':'UCuyRsHZILrU7ZDIAbGASHdA' ,'thequint':'UCSaf-7p3J_N-02p7jHzm5tA' , 'repulicbharat':'UC7wXt18f2iA3EDXeqAVuKng','timesnow':'UC6RJ7-PaXg6TIH2BzZfTV7w' , 'zeenews':'UCIvaYmXn910QMdemBG3v1pQ','wion':'UC_gUM8rL-Lrg6O3adPW9K1g'}
+channels = {'lallantop': 'UCx8Z14PpntdaxCt2hakbQLQ', 'aajtak': 'UCt4t-jeY85JegMlZ-E5UWtA',
+            'abpnews': 'UCRWFSbif-RFENbBrSiez1DA', 'altnews': 'UCdDjoZAtt6PjQKAbr2FTOAQ',
+            'indiatoday': 'UCYPvAwZP8pZhSMW8qs7cVCw', 'indiatv': 'UCttspZesZIDEwwpVIgoZtWQ',
+            'ndtv': 'UC9CYT9gSNLevX5ey2_6CK0Q', 'theprint': 'UCuyRsHZILrU7ZDIAbGASHdA',
+            'thequint': 'UCSaf-7p3J_N-02p7jHzm5tA', 'repulicbharat': 'UC7wXt18f2iA3EDXeqAVuKng',
+            'timesnow': 'UC6RJ7-PaXg6TIH2BzZfTV7w', 'zeenews': 'UCIvaYmXn910QMdemBG3v1pQ',
+            'wion': 'UC_gUM8rL-Lrg6O3adPW9K1g'}
 
 for i in channels:
     try:
         update(i)
 
     except:
-        print('erorr in' , i)
+        print('erorr in', i)
