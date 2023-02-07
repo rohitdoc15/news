@@ -7,26 +7,44 @@
 
 
 
-<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+<body class="" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+{% if not results %}
+
+<div hx-post="click/"
+     hx-target="#new"
+     ></div>
+{% elif  results  %}
 {% for i in results  %}
 
-<div  class=" m-1 p-1  h-9 rounded-t-none border-b-2 border-dotted border-b-slate-900 hover:bg-slate-900">
-<form  hx-post="{% static 'function/clouds/' %}{{ i }}.svg"
-    hx-target="#top"
+
+
+<div class=" w-96 place-content-center drop-shadow-2xl shadow-white">
+<form class="my-0 rounded-lg"  hx-post="{% url 'cloud' %}"
+    hx-target="#new"
     hx-include="[name='name']">
 
+    
+
+     <button onclick="scrollFunction1()" class="flex shadow-md rounded-b rounded-t-none  shadow-cyan-900 w-full bg-black pt-3  text-slate-200 hover:bg-slate-700"  type="submit"  value="{{i}}" name="name">
+
+        <img  class=" h-4 flex-initial w-5 h-5 items-center mt-1 mx-2" src="{% static 'function/logo/' %}{{ i }}.png" alt="">
+        <input class="hover:cursor-pointer mb-2 mr-10" type="submit" value="{{i}}" name="name" >
 
 
-     <div class="flex hover:cursor-pointer  "  >
-        
-        <img  class=" h-4 flex-initial w-auto items-center my-2 mr-3 " src="{% static 'function/logos/' %}{{ i }}.jpg" alt="">
-        <input class="hover:cursor-pointer" type="submit" value="{{i}}" name="name">
 
-
-
-    </div>
-
+     </button>
+    
+     
 </form>
-</div>
 
+
+
+
+</div>
 {% endfor %}
+{% endif %}
+
+<!--<div  id="top">-->
+<!--<img  class="w-64 drop-shadow-lg shadow-red-500/50   " src="{% static '/images/glitch.gif' %}" alt="">-->
+
+<!--</div>-->

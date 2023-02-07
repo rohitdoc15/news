@@ -44,8 +44,10 @@ def update(channel):
     plt.tight_layout(pad=0)
 
     svg_image = wordcloud.to_svg(embed_font=True)
-    with open(f"clouds/{channel}.svg", "w+", encoding='UTF8') as f:
+    png_image = wordcloud.to_file(f"clouds/png/{channel}.png")
+    with open(f"clouds/{channel}.svg", "w+", encoding='UTF-8') as f:
         f.write(svg_image)
+
 
 
 channels = {'lallantop': 'UCx8Z14PpntdaxCt2hakbQLQ', 'aajtak': 'UCt4t-jeY85JegMlZ-E5UWtA',
@@ -57,8 +59,9 @@ channels = {'lallantop': 'UCx8Z14PpntdaxCt2hakbQLQ', 'aajtak': 'UCt4t-jeY85JegMl
             'wion': 'UC_gUM8rL-Lrg6O3adPW9K1g'}
 
 for i in channels:
-    try:
-        update(i)
 
-    except:
-        print('erorr in', i)
+    # try:
+    update(i)
+
+    # except:
+    #     print('erorr in', i)

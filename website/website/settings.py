@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1uih+)of@bh&513n!sf!#fbt(oqss3hkn1g3^&60rr8+-p$!)x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*' , 'https://0cc4-43-224-158-146.in.ngrok.io ']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'django_browser_reload',
+    'django_social_share',
 
 ]
 
@@ -141,3 +142,4 @@ INTERNAL_IPS = [
 ]
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+CSRF_TRUSTED_ORIGINS = ['https://0cc4-43-224-158-146.in.ngrok.io']
