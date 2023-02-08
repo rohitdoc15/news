@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-1uih+)of@bh&513n!sf!#fbt(oqss3hkn1g3^&60rr8+-p$!)x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*' , 'https://0cc4-43-224-158-146.in.ngrok.io ']
+
+ALLOWED_HOSTS = ['*' ]
 
 
 # Application definition
@@ -124,9 +125,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static/')
+    os.path.join(BASE_DIR,'statics/')
 ]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'function')
 MEDIA_URL = 'function/'
 
