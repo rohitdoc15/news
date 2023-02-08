@@ -26,7 +26,7 @@
   
 </div>
 
-<div hx-post="{% static 'function/clouds/' %}{{results}}.svg"
+<div hx-get="{% static 'function/clouds/' %}{{results}}.svg"
      hx-target="#cloud"
      hx-trigger="load">
 </div>
