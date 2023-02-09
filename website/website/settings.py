@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*' ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'whitenoise.runserver_nostatic',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'theme',
     'django_browser_reload',
     'django_social_share',
-    'whitenoise.runserver_nostatic',
+
 
 ]
 

@@ -3,8 +3,12 @@ from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import matplotlib.pyplot as plt
 from collections import Counter
 import numpy as np
+import datetime
+import matplotlib.cbook as cbook
+import matplotlib.image as image
 
 
+ct = datetime.datetime.now().strftime("%Y-%m-%d, %H:%M")
 def update(channel):
     # Your text data
 
@@ -38,16 +42,23 @@ def update(channel):
                           min_font_size=5).generate_from_frequencies(word_freq)
     wordcloud.recolor(color_func=colormap)
     # Plot the word cloud
-    plt.figure(figsize=(10, 10), facecolor=None)
+
+    fig = plt.figure(figsize=(10, 10), facecolor=None)
     plt.imshow(wordcloud)
     plt.axis("off")
     plt.tight_layout(pad=0)
 
     svg_image = wordcloud.to_svg(embed_font=True)
-    png_image = wordcloud.to_file(f"clouds/png/{channel}.png")
+
     with open(f"clouds/{channel}.svg", "w+", encoding='UTF-8') as f:
         f.write(svg_image)
-
+    with cbook.Path('footerw.png') as file:
+        im = image.imread(file)
+    fig.figimage(im, 1, 1, zorder=0, alpha=1)
+    COLOR = 'white'
+    plt.rcParams['text.color'] = COLOR
+    plt.text(10, 980, f"Channel:{channel.title()} {ct}")
+    png_image = plt.savefig(f"clouds/png/{channel}.png")
 
 
 channels = {'lallantop': 'UCx8Z14PpntdaxCt2hakbQLQ', 'aajtak': 'UCt4t-jeY85JegMlZ-E5UWtA',
@@ -60,8 +71,12 @@ channels = {'lallantop': 'UCx8Z14PpntdaxCt2hakbQLQ', 'aajtak': 'UCt4t-jeY85JegMl
 
 for i in channels:
 
-    # try:
-    update(i)
+    try:
+        update(i)
 
-    # except:
-    #     print('erorr in', i)
+    except:
+        print('error in' , i)
+
+
+
+

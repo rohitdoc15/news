@@ -38,7 +38,7 @@ def check_channel(request):
 
 
     else:
-        return HttpResponse('<h1 style="color:DimGray; text-align:left;margin-right:13rem;margin-top:4px">channel not found... 😞</h1>')
+        return render(request, 'pages/nf.html')
 
 def channel_name(request):
     channel = request.POST.get('name')
