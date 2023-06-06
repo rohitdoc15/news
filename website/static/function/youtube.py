@@ -1,30 +1,33 @@
-from googleapiclient.discovery import build
 
-api_key = "AIzaSyCitwCx37bwvi-PoCXm3xzRAhNyycVCptc"
+from googleapiclient.discovery import build
+from pages.models import NewsChannel, Video  # replace your_app_name with the actual name of your Django app
+
+api_key = "AIzaSyA6BUZRAWF3imUWzPyMs6D2ZdF7Jrz6H4Q"
 youtube = build('youtube', 'v3', developerKey=api_key)
 
-def update(name , id):
-    channel_id = id
+def update(channel):
+    channel_id = channel.channel_id
     request = youtube.search().list(part="snippet", channelId=channel_id, order='date', maxResults=200)
     response = request.execute()
-    text = ' '
 
-    for video in response['items']:
-        answer = (video["snippet"]["title"])
-        text = text + answer
+    for item in response['items']:
+        if item['id']['kind'] == "youtube#video":
+            Video.objects.create(
+                channel=channel,
+                title=item['snippet']['title'],
+                video_url=f"https://www.youtube.com/watch?v={item['id']['videoId']}",
+                thumbnail_url=item['snippet']['thumbnails']['default']['url'],
+                published_date=item['snippet']['publishedAt'],
+                # Add additional fields as necessary
+            )
 
-    with open(f"texts/{name}.txt", "w" , encoding='utf8') as file:
-        file.write(text)
+news_channels = NewsChannel.objects.all()
 
-channels = {'lallantop': 'UCx8Z14PpntdaxCt2hakbQLQ', 'aajtak': 'UCt4t-jeY85JegMlZ-E5UWtA' , 'abpnews': 'UCRWFSbif-RFENbBrSiez1DA','altnews':'UCdDjoZAtt6PjQKAbr2FTOAQ' , 'indiatoday':'UCYPvAwZP8pZhSMW8qs7cVCw','indiatv':'UCttspZesZIDEwwpVIgoZtWQ','ndtv':'UC9CYT9gSNLevX5ey2_6CK0Q','theprint':'UCuyRsHZILrU7ZDIAbGASHdA' ,'thequint':'UCSaf-7p3J_N-02p7jHzm5tA' , 'repulicbharat':'UC7wXt18f2iA3EDXeqAVuKng','timesnow':'UC6RJ7-PaXg6TIH2BzZfTV7w' , 'zeenews':'UCIvaYmXn910QMdemBG3v1pQ','wion':'UC_gUM8rL-Lrg6O3adPW9K1g'}
-
-for i in channels:
+for channel in news_channels:
     try:
-        update(i, channels[i])
-    except:
-        print('error in', i)
-
-
+        update(channel)
+    except Exception as e:
+        print('error in', channel.name, e)
 
 
 
