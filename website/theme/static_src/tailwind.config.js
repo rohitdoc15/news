@@ -42,8 +42,55 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+      extend: {
+        colors: {
+          gray: {
+            "100": "#fffefe",
+            "200": "#fcfcfc",
+            "300": "#1e1f20",
+            "400": "#201919",
+            "500": "#0a0303",
+            "600": "rgba(0, 0, 0, 0.8)",
+          },
+          white: "#fff",
+          silver: "#bdbfc7",
+          darkslateblue: "#243465",
+          lightsteelblue: "#cad5f5",
+          ghostwhite: "#f6f9ff",
+          black: "#000",
+          whitesmoke: "#eee",
+          limegreen: "#3dd34c",
+          mediumslateblue: "#6d62f7",
+          darkslategray: "#4b4b4b",
+          royalblue: "#2280ff",
+        },
+        fontFamily: {
+          "open-sans": "'Open Sans'",
+          "nunito-sans": "'Nunito Sans'",
+          inter: "Inter",
+          aladin: "Aladin",
+        },
+        borderRadius: {
+          "smi-5": "12.5px",
+          "8xs": "5px",
+        },
+      },
+      fontSize: {
+        xs: "12px",
+        lg: "18px",
+        sm: "14px",
+        "3xs": "10px",
+        smi: "13px",
+        "2xs": "11px",
+      },
+      screens: {
+        sm: {
+          max: "420px",
+        },
+      },
     },
+
+    
     plugins: [
         /**
          * '@tailwindcss/forms' is the forms plugin that provides a minimal styling
@@ -56,3 +103,4 @@ module.exports = {
         require('@tailwindcss/aspect-ratio'),
     ],
 }
+

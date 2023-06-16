@@ -1,0 +1,404 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000">
+<style>@font-face{font-family:'Arya';font-weight:normal;font-style:normal;src:url("data:application/font-woff;charset=utf-8;base64,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")format("woff");}</style>
+<style>text{font-family:'Arya';font-weight:normal;font-style:normal;}</style>
+<text transform="translate(77,550)" font-size="248" style="fill:rgb(157, 159, 152)">Cyclone</text>
+<text transform="translate(323,731)" font-size="207" style="fill:rgb(206, 214, 129)">Senthil</text>
+<text transform="translate(488,312)" font-size="137" style="fill:rgb(131, 50, 127)">Biparjoy</text>
+<text transform="translate(39,296)" font-size="118" style="fill:rgb(139, 45, 133)">Updates</text>
+<text transform="translate(43,798)" font-size="100" style="fill:rgb(249, 250, 135)">Gujarat</text>
+<text transform="translate(116,706) rotate(-90)" font-size="92" style="fill:rgb(41, 81, 212)">Live</text>
+<text transform="translate(697,803)" font-size="89" style="fill:rgb(242, 242, 85)">DMK</text>
+<text transform="translate(351,821)" font-size="66" style="fill:rgb(249, 251, 155)">Balaji&amp;#39;s</text>
+<text transform="translate(124,636)" font-size="66" style="fill:rgb(83, 113, 167)">BJP</text>
+<text transform="translate(311,383)" font-size="64" style="fill:rgb(162, 25, 91)">From</text>
+<text transform="translate(197,700)" font-size="62" style="fill:rgb(234, 235, 18)">After</text>
+<text transform="translate(681,357)" font-size="62" style="fill:rgb(248, 9, 11)">PM</text>
+<text transform="translate(185,354)" font-size="60" style="fill:rgb(252, 3, 6)">US</text>
+<text transform="translate(522,383)" font-size="60" style="fill:rgb(142, 31, 112)">Indian</text>
+<text transform="translate(761,383)" font-size="56" style="fill:rgb(115, 34, 139)">Landfall</text>
+<text transform="translate(440,586)" font-size="56" style="fill:rgb(20, 66, 244)">Out</text>
+<text transform="translate(226,837)" font-size="56" style="fill:rgb(245, 247, 107)">Over</text>
+<text transform="translate(779,839)" font-size="53" style="fill:rgb(246, 245, 145)">News:</text>
+<text transform="translate(39,355)" font-size="53" style="fill:rgb(201, 46, 83)">Ahead</text>
+<text transform="translate(577,602) rotate(-90)" font-size="53" style="fill:rgb(18, 63, 244)">A</text>
+<text transform="translate(202,390)" font-size="48" style="fill:rgb(164, 21, 91)">Balaji</text>
+<text transform="translate(49,850)" font-size="48" style="fill:rgb(249, 251, 137)">India</text>
+<text transform="translate(866,773)" font-size="48" style="fill:rgb(246, 254, 0)">High</text>
+<text transform="translate(330,848)" font-size="38" style="fill:rgb(247, 247, 165)">English</text>
+<text transform="translate(881,411)" font-size="38" style="fill:rgb(147, 27, 98)">Why</text>
+<text transform="translate(223,632)" font-size="38" style="fill:rgb(116, 142, 132)">Watch</text>
+<text transform="translate(927,548) rotate(-90)" font-size="36" style="fill:rgb(125, 149, 244)">Arrest</text>
+<text transform="translate(369,322)" font-size="36" style="fill:rgb(246, 8, 8)">Minister</text>
+<text transform="translate(129,470)" font-size="36" style="fill:rgb(7, 55, 249)">Calls</text>
+<text transform="translate(492,852)" font-size="36" style="fill:rgb(249, 249, 194)">Karnataka</text>
+<text transform="translate(582,574)" font-size="35" style="fill:rgb(58, 94, 193)">Congress</text>
+<text transform="translate(282,576)" font-size="35" style="fill:rgb(73, 107, 179)">Newshour</text>
+<text transform="translate(163,722) rotate(-90)" font-size="35" style="fill:rgb(235, 239, 17)">Brij</text>
+<text transform="translate(766,576)" font-size="33" style="fill:rgb(11, 60, 246)">Modi</text>
+<text transform="translate(255,724)" font-size="33" style="fill:rgb(234, 235, 16)">Case</text>
+<text transform="translate(713,859)" font-size="33" style="fill:rgb(248, 248, 142)">With</text>
+<text transform="translate(588,407)" font-size="33" style="fill:rgb(98, 38, 154)">Violence</text>
+<text transform="translate(528,753)" font-size="33" style="fill:rgb(239, 240, 8)">Ground</text>
+<text transform="translate(448,348)" font-size="33" style="fill:rgb(240, 16, 16)">Govt</text>
+<text transform="translate(36,393)" font-size="33" style="fill:rgb(236, 79, 85)">Now</text>
+<text transform="translate(751,595)" font-size="31" style="fill:rgb(22, 66, 227)">Report</text>
+<text transform="translate(932,695)" font-size="31" style="fill:rgb(249, 251, 128)">Is</text>
+<text transform="translate(710,393)" font-size="31" style="fill:rgb(245, 12, 12)">IMD</text>
+<text transform="translate(167,858)" font-size="29" style="fill:rgb(252, 253, 208)">Modi&amp;#39;s</text>
+<text transform="translate(326,404)" font-size="29" style="fill:rgb(173, 30, 80)">Tamil</text>
+<text transform="translate(516,405)" font-size="29" style="fill:rgb(173, 25, 76)">Nadu</text>
+<text transform="translate(644,849)" font-size="29" style="fill:rgb(249, 251, 124)">Army</text>
+<text transform="translate(249,330)" font-size="29" style="fill:rgb(245, 14, 16)">Alert</text>
+<text transform="translate(912,807)" font-size="29" style="fill:rgb(246, 254, 2)">CM</text>
+<text transform="translate(863,574)" font-size="29" style="fill:rgb(9, 57, 249)">Asks</text>
+<text transform="translate(844,860)" font-size="29" style="fill:rgb(250, 250, 194)">Panelist</text>
+<text transform="translate(582,600)" font-size="29" style="fill:rgb(22, 64, 225)">Bengal</text>
+<text transform="translate(364,754)" font-size="29" style="fill:rgb(239, 242, 9)">Evacuated</text>
+<text transform="translate(760,402)" font-size="27" style="fill:rgb(100, 35, 154)">Panchayat</text>
+<text transform="translate(118,655)" font-size="27" style="fill:rgb(175, 186, 72)">Debate</text>
+<text transform="translate(702,538) rotate(-90)" font-size="27" style="fill:rgb(9, 57, 249)">Update</text>
+<text transform="translate(419,614)" font-size="18" style="fill:rgb(151, 165, 101)">&amp;#39;Biparjoy&amp;#39;</text>
+<text transform="translate(777,857)" font-size="18" style="fill:rgb(249, 249, 167)">Against</text>
+<text transform="translate(457,264)" font-size="16" style="fill:rgb(254, 0, 3)">ED</text>
+<text transform="translate(521,328)" font-size="16" style="fill:rgb(242, 16, 16)">Fire</text>
+<text transform="translate(63,722)" font-size="16" style="fill:rgb(246, 254, 0)">Red</text>
+<text transform="translate(918,658)" font-size="16" style="fill:rgb(168, 180, 64)">What</text>
+<text transform="translate(117,374)" font-size="16" style="fill:rgb(247, 4, 5)">Agenda</text>
+<text transform="translate(243,425)" font-size="16" style="fill:rgb(226, 9, 16)">By</text>
+<text transform="translate(446,360)" font-size="16" style="fill:rgb(240, 17, 16)">Rahul</text>
+<text transform="translate(60,446)" font-size="16" style="fill:rgb(5, 53, 253)">TMC</text>
+<text transform="translate(645,864)" font-size="16" style="fill:rgb(250, 249, 190)">Erupts</text>
+<text transform="translate(182,731)" font-size="16" style="fill:rgb(233, 232, 13)">Custody</text>
+<text transform="translate(430,864)" font-size="16" style="fill:rgb(248, 246, 133)">Bail</text>
+<text transform="translate(126,576)" font-size="16" style="fill:rgb(16, 61, 246)">Underway</text>
+<text transform="translate(750,412)" font-size="16" style="fill:rgb(253, 0, 3)">Up</text>
+<text transform="translate(442,767)" font-size="16" style="fill:rgb(243, 251, 4)">Did</text>
+<text transform="translate(135,489)" font-size="16" style="fill:rgb(5, 55, 251)">Police</text>
+<text transform="translate(557,865)" font-size="16" style="fill:rgb(251, 251, 207)">Bhushan</text>
+<text transform="translate(728,815)" font-size="16" style="fill:rgb(246, 253, 1)">Ram</text>
+<text transform="translate(726,576)" font-size="14" style="fill:rgb(3, 53, 253)">But</text>
+<text transform="translate(822,327)" font-size="14" style="fill:rgb(242, 12, 12)">During</text>
+<text transform="translate(795,610)" font-size="14" style="fill:rgb(4, 53, 254)">State</text>
+<text transform="translate(599,763)" font-size="14" style="fill:rgb(233, 230, 25)">Visit,</text>
+<text transform="translate(785,296) rotate(-90)" font-size="14" style="fill:rgb(240, 14, 12)">Power</text>
+<text transform="translate(598,619)" font-size="14" style="fill:rgb(4, 53, 254)">Fresh</text>
+<text transform="translate(272,415)" font-size="14" style="fill:rgb(190, 19, 55)">Biden</text>
+<text transform="translate(316,464)" font-size="14" style="fill:rgb(5, 53, 255)">All</text>
+<text transform="translate(888,448)" font-size="14" style="fill:rgb(4, 53, 254)">Deal</text>
+<text transform="translate(761,670)" font-size="14" style="fill:rgb(244, 250, 16)">MK</text>
+<text transform="translate(657,766) rotate(-90)" font-size="14" style="fill:rgb(231, 230, 21)">Stalin</text>
+<text transform="translate(50,489)" font-size="14" style="fill:rgb(8, 52, 233)">Court</text>
+<text transform="translate(643,417)" font-size="14" style="fill:rgb(117, 35, 136)">Expected</text>
+<text transform="translate(319,598) rotate(-90)" font-size="14" style="fill:rgb(5, 53, 255)">You</text>
+<text transform="translate(433,231)" font-size="14" style="fill:rgb(247, 31, 32)">Cries</text>
+<text transform="translate(359,489)" font-size="14" style="fill:rgb(4, 53, 253)">Workers</text>
+<text transform="translate(192,814)" font-size="14" style="fill:rgb(246, 254, 0)">How</text>
+<text transform="translate(656,348) rotate(-90)" font-size="14" style="fill:rgb(245, 15, 17)">Today</text>
+<text transform="translate(898,218)" font-size="14" style="fill:rgb(247, 104, 103)">Coastal</text>
+<text transform="translate(413,416)" font-size="14" style="fill:rgb(137, 26, 106)">Political</text>
+<text transform="translate(554,335)" font-size="14" style="fill:rgb(252, 1, 3)">Delhi</text>
+<text transform="translate(612,219)" font-size="14" style="fill:rgb(246, 171, 170)">UCC</text>
+<text transform="translate(720,507) rotate(-90)" font-size="14" style="fill:rgb(11, 63, 245)">Chief</text>
+<text transform="translate(165,226)" font-size="14" style="fill:rgb(245, 99, 100)">Can</text>
+<text transform="translate(577,499)" font-size="14" style="fill:rgb(41, 83, 232)">Be</text>
+<text transform="translate(331,414)" font-size="14" style="fill:rgb(177, 31, 73)">Makes</text>
+<text transform="translate(153,587)" font-size="12" style="fill:rgb(5, 53, 255)">Will</text>
+<text transform="translate(914,817)" font-size="12" style="fill:rgb(246, 254, 0)">Leader</text>
+<text transform="translate(664,755)" font-size="12" style="fill:rgb(238, 240, 10)">Breaks</text>
+<text transform="translate(483,868)" font-size="12" style="fill:rgb(252, 250, 223)">Highway</text>
+<text transform="translate(303,501)" font-size="12" style="fill:rgb(5, 53, 255)">Key</text>
+<text transform="translate(704,585)" font-size="12" style="fill:rgb(4, 52, 253)">House</text>
+<text transform="translate(772,871)" font-size="12" style="fill:rgb(253, 252, 244)">Maharashtra</text>
+<text transform="translate(55,503)" font-size="12" style="fill:rgb(5, 53, 251)">Top</text>
+<text transform="translate(135,869)" font-size="12" style="fill:rgb(254, 253, 243)">&amp;#39;Conversion&amp;#39;</text>
+<text transform="translate(112,385)" font-size="12" style="fill:rgb(253, 0, 2)">Amid</text>
+<text transform="translate(289,541)" font-size="12" style="fill:rgb(5, 53, 255)">Economic</text>
+<text transform="translate(193,399)" font-size="12" style="fill:rgb(227, 6, 23)">Manipur</text>
+<text transform="translate(450,282)" font-size="12" style="fill:rgb(253, 0, 3)">Biparjoy:</text>
+<text transform="translate(199,649)" font-size="12" style="fill:rgb(145, 161, 95)">Defence</text>
+<text transform="translate(366,592) rotate(-90)" font-size="12" style="fill:rgb(4, 52, 251)">Big</text>
+<text transform="translate(475,764)" font-size="12" style="fill:rgb(233, 231, 17)">Pakistan</text>
+<text transform="translate(677,594)" font-size="12" style="fill:rgb(5, 53, 255)">Fadnavis</text>
+<text transform="translate(377,866)" font-size="12" style="fill:rgb(251, 248, 198)">Anand</text>
+<text transform="translate(320,330)" font-size="12" style="fill:rgb(240, 18, 21)">Ranganathan</text>
+<text transform="translate(512,457) rotate(-90)" font-size="12" style="fill:rgb(221, 9, 9)">Panelist,</text>
+<text transform="translate(305,869)" font-size="12" style="fill:rgb(252, 250, 223)">&amp;#39;Do</text>
+<text transform="translate(517,632)" font-size="12" style="fill:rgb(7, 52, 241)">Agree</text>
+<text transform="translate(45,866)" font-size="12" style="fill:rgb(252, 251, 231)">Looter?&amp;#39;</text>
+<text transform="translate(709,230)" font-size="12" style="fill:rgb(244, 25, 25)">Questions</text>
+<text transform="translate(125,507)" font-size="12" style="fill:rgb(7, 56, 248)">ISF</text>
+<text transform="translate(265,340)" font-size="12" style="fill:rgb(250, 2, 5)">Know</text>
+<text transform="translate(130,433)" font-size="12" style="fill:rgb(41, 45, 206)">Filing</text>
+<text transform="translate(67,676)" font-size="12" style="fill:rgb(246, 254, 0)">Carpet</text>
+<text transform="translate(537,562)" font-size="12" style="fill:rgb(25, 69, 238)">Adani</text>
+<text transform="translate(402,329)" font-size="12" style="fill:rgb(240, 19, 19)">Cong</text>
+<text transform="translate(837,232)" font-size="12" style="fill:rgb(247, 12, 14)">&amp;#39;Duplicity&amp;#39;</text>
+<text transform="translate(347,223)" font-size="12" style="fill:rgb(244, 63, 62)">Blueprint</text>
+<text transform="translate(227,575) rotate(-90)" font-size="12" style="fill:rgb(10, 58, 249)">Explosive</text>
+<text transform="translate(772,535) rotate(-90)" font-size="12" style="fill:rgb(9, 57, 245)">Opposition</text>
+<text transform="translate(286,216)" font-size="12" style="fill:rgb(247, 195, 195)">Back</text>
+<text transform="translate(885,586)" font-size="12" style="fill:rgb(4, 52, 255)">Amidst</text>
+<text transform="translate(715,825)" font-size="12" style="fill:rgb(228, 223, 24)">Health</text>
+<text transform="translate(266,441)" font-size="12" style="fill:rgb(5, 53, 255)">TN</text>
+<text transform="translate(622,228)" font-size="12" style="fill:rgb(246, 28, 29)">Minister&amp;#39;s</text>
+<text transform="translate(594,691) rotate(-90)" font-size="12" style="fill:rgb(156, 158, 50)">Judicial</text>
+<text transform="translate(366,621)" font-size="12" style="fill:rgb(4, 53, 254)">Till</text>
+<text transform="translate(704,544)" font-size="12" style="fill:rgb(22, 66, 238)">Plea</text>
+<text transform="translate(660,774)" font-size="12" style="fill:rgb(235, 235, 16)">Upfront</text>
+<text transform="translate(555,460)" font-size="12" style="fill:rgb(20, 66, 244)">Navika</text>
+<text transform="translate(182,554)" font-size="12" style="fill:rgb(6, 54, 252)">Kumar</text>
+<text transform="translate(134,306)" font-size="12" style="fill:rgb(248, 2, 4)">Teams</text>
+<text transform="translate(427,487)" font-size="12" style="fill:rgb(72, 114, 233)">War</text>
+<text transform="translate(579,718)" font-size="12" style="fill:rgb(228, 227, 30)">Areas</text>
+<text transform="translate(272,653)" font-size="12" style="fill:rgb(125, 141, 104)">Story</text>
+<text transform="translate(413,499)" font-size="12" style="fill:rgb(11, 59, 251)">Wrestlers</text>
+<text transform="translate(332,311)" font-size="12" style="fill:rgb(250, 2, 3)">Rescue</text>
+<text transform="translate(458,377)" font-size="12" style="fill:rgb(234, 27, 29)">Relief</text>
+<text transform="translate(868,619)" font-size="12" style="fill:rgb(5, 53, 255)">Full</text>
+<text transform="translate(922,610)" font-size="12" style="fill:rgb(5, 53, 255)">D-Day</text>
+<text transform="translate(131,221)" font-size="12" style="fill:rgb(247, 100, 101)">Action</text>
+<text transform="translate(778,411)" font-size="12" style="fill:rgb(153, 23, 97)">Kachchh</text>
+<text transform="translate(409,394)" font-size="12" style="fill:rgb(243, 14, 12)">Likely</text>
+<text transform="translate(580,416)" font-size="12" style="fill:rgb(127, 27, 116)">Coaching</text>
+<text transform="translate(34,591)" font-size="12" style="fill:rgb(236, 236, 241)">File</text>
+<text transform="translate(500,548) rotate(-90)" font-size="12" style="fill:rgb(5, 54, 252)">Chargesheet</text>
+<text transform="translate(378,764)" font-size="12" style="fill:rgb(246, 253, 1)">WFI</text>
+<text transform="translate(890,422)" font-size="12" style="fill:rgb(104, 32, 135)">Drone</text>
+<text transform="translate(56,540)" font-size="12" style="fill:rgb(5, 52, 254)">Syllabus</text>
+<text transform="translate(79,808)" font-size="12" style="fill:rgb(247, 254, 0)">This</text>
+<text transform="translate(873,781)" font-size="12" style="fill:rgb(247, 254, 0)">Singh</text>
+<text transform="translate(247,738)" font-size="12" style="fill:rgb(245, 253, 5)">Aftermath</text>
+<text transform="translate(862,333)" font-size="12" style="fill:rgb(245, 9, 7)">Huge</text>
+<text transform="translate(926,712)" font-size="12" style="fill:rgb(246, 253, 0)">Impact</text>
+<text transform="translate(178,713)" font-size="10" style="fill:rgb(235, 237, 16)">Border</text>
+<text transform="translate(836,867)" font-size="10" style="fill:rgb(252, 249, 225)">Message</text>
+<text transform="translate(327,423)" font-size="10" style="fill:rgb(180, 25, 63)">Viral:</text>
+<text transform="translate(633,651)" font-size="10" style="fill:rgb(121, 137, 116)">Down</text>
+<text transform="translate(720,869)" font-size="10" style="fill:rgb(252, 249, 230)">Hospital</text>
+<text transform="translate(771,225)" font-size="10" style="fill:rgb(244, 113, 113)">Him</text>
+<text transform="translate(148,538) rotate(-90)" font-size="10" style="fill:rgb(6, 54, 251)">Money</text>
+<text transform="translate(351,341)" font-size="10" style="fill:rgb(242, 18, 17)">Laundering</text>
+<text transform="translate(88,729)" font-size="10" style="fill:rgb(247, 254, 0)">Farmers</text>
+<text transform="translate(305,512)" font-size="10" style="fill:rgb(5, 53, 255)">Stage</text>
+<text transform="translate(169,828)" font-size="10" style="fill:rgb(247, 250, 52)">Delhi-Rohtak</text>
+<text transform="translate(43,363)" font-size="10" style="fill:rgb(238, 93, 91)">Blockade,</text>
+<text transform="translate(839,419)" font-size="10" style="fill:rgb(111, 30, 131)">Demand</text>
+<text transform="translate(43,414)" font-size="10" style="fill:rgb(191, 123, 149)">Attention</text>
+<text transform="translate(390,515)" font-size="10" style="fill:rgb(3, 52, 250)">25</text>
+<text transform="translate(760,425)" font-size="10" style="fill:rgb(77, 38, 175)">Demands</text>
+<text transform="translate(101,806)" font-size="10" style="fill:rgb(247, 254, 0)">Dinner</text>
+<text transform="translate(68,308)" font-size="10" style="fill:rgb(254, 0, 3)">Visit</text>
+<text transform="translate(271,479) rotate(-90)" font-size="10" style="fill:rgb(6, 55, 252)">Raj</text>
+<text transform="translate(662,236)" font-size="10" style="fill:rgb(246, 7, 6)">Storm</text>
+<text transform="translate(397,585)" font-size="10" style="fill:rgb(5, 54, 247)">Abuse</text>
+<text transform="translate(372,468)" font-size="10" style="fill:rgb(5, 53, 255)">India,</text>
+<text transform="translate(462,868)" font-size="10" style="fill:rgb(250, 243, 194)">Ties</text>
+<text transform="translate(496,690)" font-size="10" style="fill:rgb(240, 246, 6)">Away</text>
+<text transform="translate(122,664)" font-size="10" style="fill:rgb(227, 232, 26)">Panel</text>
+<text transform="translate(545,413)" font-size="10" style="fill:rgb(217, 11, 19)">Trump</text>
+<text transform="translate(412,871)" font-size="10" style="fill:rgb(254, 253, 244)">Indictment</text>
+<text transform="translate(328,594)" font-size="10" style="fill:rgb(15, 62, 245)">Braces</text>
+<text transform="translate(201,421)" font-size="10" style="fill:rgb(134, 26, 115)">Severe</text>
+<text transform="translate(180,371)" font-size="10" style="fill:rgb(254, 0, 3)">Live:</text>
+<text transform="translate(103,231)" font-size="10" style="fill:rgb(242, 23, 27)">Counts</text>
+<text transform="translate(516,755) rotate(-90)" font-size="10" style="fill:rgb(229, 226, 16)">First</text>
+<text transform="translate(563,469)" font-size="10" style="fill:rgb(5, 56, 239)">UP</text>
+<text transform="translate(299,525)" font-size="10" style="fill:rgb(5, 53, 255)">Visits</text>
+<text transform="translate(267,456)" font-size="10" style="fill:rgb(5, 53, 254)">Their</text>
+<text transform="translate(335,230)" font-size="10" style="fill:rgb(244, 24, 23)">Politics</text>
+<text transform="translate(263,872)" font-size="10" style="fill:rgb(253, 253, 245)">Devendra</text>
+<text transform="translate(149,382)" font-size="10" style="fill:rgb(244, 12, 13)">Reportedly</text>
+<text transform="translate(693,678)" font-size="10" style="fill:rgb(236, 241, 18)">Upset</text>
+<text transform="translate(767,547)" font-size="10" style="fill:rgb(8, 56, 245)">Eknath</text>
+<text transform="translate(208,517)" font-size="10" style="fill:rgb(7, 56, 250)">Shinde,</text>
+<text transform="translate(623,544)" font-size="10" style="fill:rgb(5, 53, 255)">Cancels</text>
+<text transform="translate(812,343)" font-size="10" style="fill:rgb(232, 32, 24)">2</text>
+<text transform="translate(707,402)" font-size="10" style="fill:rgb(244, 11, 11)">Events</text>
+<text transform="translate(371,631)" font-size="10" style="fill:rgb(3, 54, 253)">Hours</text>
+<text transform="translate(849,499)" font-size="10" style="fill:rgb(5, 53, 252)">Controversy</text>
+<text transform="translate(602,232)" font-size="10" style="fill:rgb(242, 13, 13)">Foul</text>
+<text transform="translate(442,238)" font-size="10" style="fill:rgb(253, 0, 3)">NewsHour</text>
+<text transform="translate(227,227)" font-size="10" style="fill:rgb(246, 44, 44)">Clashes</text>
+<text transform="translate(188,480)" font-size="10" style="fill:rgb(4, 53, 252)">Between</text>
+<text transform="translate(749,686)" font-size="10" style="fill:rgb(229, 231, 23)">Volcano</text>
+<text transform="translate(646,731) rotate(-90)" font-size="10" style="fill:rgb(242, 245, 14)">Most</text>
+<text transform="translate(53,550)" font-size="10" style="fill:rgb(5, 53, 251)">Clashed</text>
+<text transform="translate(913,246)" font-size="10" style="fill:rgb(249, 5, 7)">While</text>
+<text transform="translate(90,706)" font-size="10" style="fill:rgb(246, 254, 0)">Nomination</text>
+<text transform="translate(903,868)" font-size="10" style="fill:rgb(252, 249, 224)">Updates:</text>
+<text transform="translate(533,219)" font-size="10" style="fill:rgb(244, 163, 160)">Rolls</text>
+<text transform="translate(785,737)" font-size="10" style="fill:rgb(238, 237, 16)">Exposes</text>
+<text transform="translate(765,618)" font-size="10" style="fill:rgb(63, 96, 187)">Gandhi&amp;#39;s</text>
+<text transform="translate(65,521)" font-size="10" style="fill:rgb(5, 53, 255)">Crisis,</text>
+<text transform="translate(425,731)" font-size="10" style="fill:rgb(214, 204, 25)">June</text>
+<text transform="translate(318,604)" font-size="10" style="fill:rgb(5, 53, 255)">28</text>
+<text transform="translate(846,533) rotate(-90)" font-size="10" style="fill:rgb(9, 59, 247)">Video</text>
+<text transform="translate(573,701)" font-size="10" style="fill:rgb(228, 225, 31)">Moves</text>
+<text transform="translate(409,339)" font-size="10" style="fill:rgb(243, 14, 13)">Brutally</text>
+<text transform="translate(62,230)" font-size="10" style="fill:rgb(243, 23, 24)">Cops</text>
+<text transform="translate(599,873)" font-size="10" style="fill:rgb(254, 254, 249)">Conditions</text>
+<text transform="translate(829,346)" font-size="10" style="fill:rgb(249, 7, 5)">West</text>
+<text transform="translate(584,770)" font-size="10" style="fill:rgb(234, 238, 13)">Polls</text>
+<text transform="translate(941,534) rotate(-90)" font-size="10" style="fill:rgb(139, 159, 237)">Reported</text>
+<text transform="translate(591,728)" font-size="10" style="fill:rgb(243, 253, 5)">Hit</text>
+<text transform="translate(290,422)" font-size="10" style="fill:rgb(115, 30, 131)">Predicts</text>
+<text transform="translate(161,668)" font-size="10" style="fill:rgb(239, 244, 17)">Elections</text>
+<text transform="translate(691,702)" font-size="10" style="fill:rgb(238, 243, 11)">Gandhi</text>
+<text transform="translate(324,683)" font-size="10" style="fill:rgb(234, 238, 17)">Change</text>
+<text transform="translate(39,622)" font-size="10" style="fill:rgb(173, 181, 219)">Arrest,</text>
+<text transform="translate(713,739)" font-size="10" style="fill:rgb(237, 241, 8)">Biparjoy&amp;#39;s</text>
+<text transform="translate(738,308)" font-size="10" style="fill:rgb(254, 0, 3)">18</text>
+<text transform="translate(47,455)" font-size="10" style="fill:rgb(42, 75, 217)">Deployed</text>
+<text transform="translate(279,597)" font-size="10" style="fill:rgb(5, 53, 255)">Order</text>
+<text transform="translate(842,740)" font-size="10" style="fill:rgb(245, 253, 5)">Seeks</text>
+<text transform="translate(102,737)" font-size="10" style="fill:rgb(246, 254, 0)">Senthil&amp;#39;s</text>
+<text transform="translate(919,448)" font-size="10" style="fill:rgb(8, 56, 250)">Meeting</text>
+<text transform="translate(930,470)" font-size="10" style="fill:rgb(18, 63, 235)">Deals</text>
+<text transform="translate(449,384) rotate(-90)" font-size="10" style="fill:rgb(240, 17, 15)">Tour</text>
+<text transform="translate(927,550)" font-size="10" style="fill:rgb(5, 53, 255)">Gears</text>
+<text transform="translate(710,527)" font-size="10" style="fill:rgb(2, 54, 252)">OPs</text>
+<text transform="translate(532,715) rotate(-90)" font-size="10" style="fill:rgb(246, 253, 0)">Swing</text>
+<text transform="translate(693,609)" font-size="10" style="fill:rgb(5, 53, 255)">Warns</text>
+<text transform="translate(390,652)" font-size="10" style="fill:rgb(158, 172, 73)">Towards</text>
+<text transform="translate(883,731) rotate(-90)" font-size="10" style="fill:rgb(86, 103, 149)">&amp;#39;Biprajoy&amp;#39;</text>
+<text transform="translate(550,478)" font-size="10" style="fill:rgb(28, 73, 246)">Sighting</text>
+<text transform="translate(464,692)" font-size="10" style="fill:rgb(225, 227, 25)">Space</text>
+<text transform="translate(45,423)" font-size="10" style="fill:rgb(138, 98, 163)">Dramatic</text>
+<text transform="translate(458,846)" font-size="10" style="fill:rgb(246, 247, 44)">Visuals</text>
+<text transform="translate(521,766)" font-size="10" style="fill:rgb(236, 239, 11)">&amp;#39;Maha</text>
+<text transform="translate(172,306)" font-size="10" style="fill:rgb(253, 0, 2)">Toofan&amp;#39;</text>
+<text transform="translate(366,592)" font-size="10" style="fill:rgb(28, 69, 219)">Bhushan-Wrestlers</text>
+<text transform="translate(918,725)" font-size="10" style="fill:rgb(247, 254, 0)">Eyes</text>
+<text transform="translate(89,311)" font-size="10" style="fill:rgb(254, 0, 3)">FIRs</text>
+<text transform="translate(697,417)" font-size="10" style="fill:rgb(155, 22, 89)">Mandvi,</text>
+<text transform="translate(342,772)" font-size="10" style="fill:rgb(235, 238, 15)">Students</text>
+<text transform="translate(921,621)" font-size="10" style="fill:rgb(4, 53, 254)">Institute</text>
+<text transform="translate(635,677)" font-size="10" style="fill:rgb(232, 236, 23)">Hold</text>
+<text transform="translate(252,398)" font-size="10" style="fill:rgb(242, 16, 16)">Decide</text>
+<text transform="translate(689,365)" font-size="10" style="fill:rgb(248, 10, 12)">Pakistan&amp;#39;s</text>
+<text transform="translate(731,286)" font-size="10" style="fill:rgb(252, 0, 3)">Its</text>
+<text transform="translate(536,344)" font-size="10" style="fill:rgb(244, 5, 4)">Delhi&amp;#39;s</text>
+<text transform="translate(910,831)" font-size="10" style="fill:rgb(245, 249, 25)">Mukherjee</text>
+<text transform="translate(355,695)" font-size="10" style="fill:rgb(247, 253, 2)">Operation</text>
+<text transform="translate(272,214)" font-size="10" style="fill:rgb(251, 254, 253)">Vs</text>
+<text transform="translate(876,602) rotate(-90)" font-size="10" style="fill:rgb(4, 53, 253)">2024</text>
+<text transform="translate(868,798)" font-size="10" style="fill:rgb(246, 254, 0)">Collapses</text>
+<text transform="translate(368,497)" font-size="10" style="fill:rgb(5, 53, 255)">#Shorts</text>
+<text transform="translate(818,461)" font-size="10" style="fill:rgb(12, 61, 242)">Tracking</text>
+<text transform="translate(210,706)" font-size="10" style="fill:rgb(222, 216, 26)">Response</text>
+<text transform="translate(554,871)" font-size="10" style="fill:rgb(254, 253, 245)">Accesses</text>
+<text transform="translate(570,536) rotate(-90)" font-size="10" style="fill:rgb(10, 58, 247)">Exclusive</text>
+<text transform="translate(612,429)" font-size="10" style="fill:rgb(85, 37, 153)">Details</text>
+<text transform="translate(880,866)" font-size="10" style="fill:rgb(247, 239, 153)">We</text>
+<text transform="translate(628,436)" font-size="10" style="fill:rgb(33, 50, 211)">Expect</text>
+<text transform="translate(722,557)" font-size="10" style="fill:rgb(5, 53, 255)">Muslim</text>
+<text transform="translate(436,531)" font-size="10" style="fill:rgb(28, 71, 240)">Talks</text>
+<text transform="translate(383,773)" font-size="10" style="fill:rgb(246, 253, 1)">Modi’s</text>
+<text transform="translate(266,228)" font-size="10" style="fill:rgb(244, 40, 39)">Speaks</text>
+<text transform="translate(89,215)" font-size="10" style="fill:rgb(248, 121, 121)">Included</text>
+<text transform="translate(432,621)" font-size="10" style="fill:rgb(32, 74, 241)">Home</text>
+<text transform="translate(623,445)" font-size="10" style="fill:rgb(5, 53, 253)">Harsh</text>
+<text transform="translate(129,773) rotate(-90)" font-size="10" style="fill:rgb(243, 243, 12)">Or</text>
+<text transform="translate(140,314)" font-size="10" style="fill:rgb(253, 0, 2)">Havoc</text>
+<text transform="translate(753,717)" font-size="10" style="fill:rgb(233, 231, 21)">Sharan</text>
+<text transform="translate(263,347)" font-size="10" style="fill:rgb(250, 2, 7)">Approaches</text>
+<text transform="translate(33,603)" font-size="10" style="fill:rgb(253, 253, 254)">General</text>
+<text transform="translate(44,215)" font-size="10" style="fill:rgb(241, 168, 168)">Savarkar</text>
+<text transform="translate(79,262) rotate(-90)" font-size="10" style="fill:rgb(247, 3, 5)">Nehru</text>
+<text transform="translate(189,493)" font-size="10" style="fill:rgb(12, 59, 243)">Textbooks</text>
+<text transform="translate(723,238)" font-size="10" style="fill:rgb(242, 16, 16)">Nominations</text>
+<text transform="translate(31,646)" font-size="10" style="fill:rgb(254, 253, 250)">New</text>
+<text transform="translate(142,502)" font-size="10" style="fill:rgb(6, 55, 251)">Cabinet</text>
+<text transform="translate(370,414)" font-size="10" style="fill:rgb(168, 19, 73)">Changes</text>
+<text transform="translate(421,433)" font-size="10" style="fill:rgb(61, 42, 174)">World</text>
+<text transform="translate(896,343) rotate(-90)" font-size="10" style="fill:rgb(253, 0, 3)">Opposing</text>
+<text transform="translate(532,876) rotate(-90)" font-size="10" style="fill:rgb(243, 239, 54)">Here!</text>
+<text transform="translate(711,685)" font-size="10" style="fill:rgb(224, 225, 39)">It?</text>
+<text transform="translate(930,560)" font-size="10" style="fill:rgb(4, 53, 254)">Atiq</text>
+<text transform="translate(86,318)" font-size="10" style="fill:rgb(254, 0, 3)">Ur</text>
+<text transform="translate(177,739)" font-size="10" style="fill:rgb(226, 222, 20)">Rehman</text>
+<text transform="translate(70,272)" font-size="10" style="fill:rgb(244, 27, 30)">Say</text>
+<text transform="translate(35,683)" font-size="10" style="fill:rgb(254, 253, 239)">This?</text>
+<text transform="translate(922,636)" font-size="10" style="fill:rgb(12, 52, 216)">Sanjay</text>
+<text transform="translate(628,320)" font-size="10" style="fill:rgb(244, 19, 22)">Jha</text>
+<text transform="translate(689,618)" font-size="10" style="fill:rgb(5, 53, 255)">Some</text>
+<text transform="translate(767,432)" font-size="10" style="fill:rgb(44, 45, 207)">Mandir</text>
+<text transform="translate(197,584)" font-size="10" style="fill:rgb(5, 54, 253)">Dropped</text>
+<text transform="translate(673,871)" font-size="10" style="fill:rgb(253, 252, 241)">Villagers</text>
+<text transform="translate(925,433)" font-size="10" style="fill:rgb(11, 51, 228)">Watch!</text>
+<text transform="translate(622,296)" font-size="10" style="fill:rgb(251, 2, 3)">Set</text>
+<text transform="translate(922,575)" font-size="10" style="fill:rgb(5, 53, 255)">Process</text>
+<text transform="translate(874,428)" font-size="10" style="fill:rgb(57, 42, 171)">Seen</text>
+<text transform="translate(689,653)" font-size="10" style="fill:rgb(146, 159, 83)">Middle</text>
+<text transform="translate(538,582) rotate(-90)" font-size="10" style="fill:rgb(5, 53, 252)">East</text>
+<text transform="translate(620,234)" font-size="8" style="fill:rgb(247, 6, 7)">Govt&amp;#39;s</text>
+<text transform="translate(52,807)" font-size="8" style="fill:rgb(247, 253, 7)">Largest</text>
+<text transform="translate(91,713)" font-size="8" style="fill:rgb(246, 254, 0)">Hydropower</text>
+<text transform="translate(491,473)" font-size="8" style="fill:rgb(10, 59, 247)">Project</text>
+<text transform="translate(825,471)" font-size="8" style="fill:rgb(22, 71, 235)">Arunachal</text>
+<text transform="translate(529,651)" font-size="8" style="fill:rgb(69, 86, 136)">Near</text>
+<text transform="translate(306,481)" font-size="8" style="fill:rgb(5, 53, 255)">China?</text>
+<text transform="translate(263,421)" font-size="8" style="fill:rgb(159, 22, 82)">Sharad</text>
+<text transform="translate(257,458) rotate(-90)" font-size="8" style="fill:rgb(5, 53, 255)">Pawar</text>
+<text transform="translate(535,867)" font-size="8" style="fill:rgb(250, 243, 204)">Tries</text>
+<text transform="translate(921,874)" font-size="8" style="fill:rgb(253, 254, 250)">Balance</text>
+<text transform="translate(953,277)" font-size="8" style="fill:rgb(252, 251, 250)">NCP</text>
+<text transform="translate(229,713)" font-size="8" style="fill:rgb(235, 238, 8)">Supriya</text>
+<text transform="translate(441,291)" font-size="8" style="fill:rgb(254, 0, 3)">Sule&amp;#39;s</text>
+<text transform="translate(762,702)" font-size="8" style="fill:rgb(225, 225, 21)">Rise</text>
+<text transform="translate(468,245)" font-size="8" style="fill:rgb(254, 0, 2)">Crush</text>
+<text transform="translate(34,569)" font-size="8" style="fill:rgb(252, 252, 254)">Ajit&amp;#39;s</text>
+<text transform="translate(691,660)" font-size="8" style="fill:rgb(215, 218, 31)">Dreams,</text>
+<text transform="translate(53,464)" font-size="8" style="fill:rgb(5, 53, 250)">Deepen</text>
+<text transform="translate(606,550)" font-size="8" style="fill:rgb(4, 53, 255)">Cracks?</text>
+<text transform="translate(54,399)" font-size="8" style="fill:rgb(250, 1, 3)">Arrests</text>
+<text transform="translate(484,359)" font-size="8" style="fill:rgb(246, 4, 5)">Alleged</text>
+<text transform="translate(869,630)" font-size="8" style="fill:rgb(4, 53, 254)">Bidens</text>
+<text transform="translate(87,365)" font-size="8" style="fill:rgb(254, 0, 3)">Host</text>
+<text transform="translate(703,454)" font-size="8" style="fill:rgb(5, 53, 254)">White</text>
+<text transform="translate(319,853)" font-size="8" style="fill:rgb(246, 246, 102)">Intimate</text>
+<text transform="translate(145,279) rotate(-90)" font-size="8" style="fill:rgb(241, 12, 11)">Cards</text>
+<text transform="translate(787,447) rotate(-90)" font-size="8" style="fill:rgb(5, 53, 255)">NSA</text>
+<text transform="translate(40,428)" font-size="8" style="fill:rgb(220, 183, 194)">Ajit</text>
+<text transform="translate(432,539)" font-size="8" style="fill:rgb(4, 54, 251)">Doval</text>
+<text transform="translate(124,495) rotate(-90)" font-size="8" style="fill:rgb(4, 53, 253)">Meets</text>
+<text transform="translate(323,352)" font-size="8" style="fill:rgb(234, 28, 32)">U.S.</text>
+<text transform="translate(517,418)" font-size="8" style="fill:rgb(115, 30, 127)">Counterpart</text>
+<text transform="translate(436,465)" font-size="8" style="fill:rgb(20, 68, 247)">Jack</text>
+<text transform="translate(461,595)" font-size="8" style="fill:rgb(23, 68, 245)">Sullivan</text>
+<text transform="translate(352,872)" font-size="8" style="fill:rgb(254, 254, 250)">Thackeray&amp;#39;s</text>
+<text transform="translate(819,289) rotate(-90)" font-size="8" style="fill:rgb(240, 33, 36)">&amp;#39;Special&amp;#39;</text>
+<text transform="translate(584,529) rotate(-90)" font-size="8" style="fill:rgb(8, 58, 246)">Birthday</text>
+<text transform="translate(363,706)" font-size="8" style="fill:rgb(233, 233, 18)">Cake,</text>
+<text transform="translate(929,732)" font-size="8" style="fill:rgb(246, 254, 0)">Aurangzeb</text>
+<text transform="translate(274,302)" font-size="8" style="fill:rgb(240, 16, 11)">Supporters?</text>
+<text transform="translate(656,337)" font-size="8" style="fill:rgb(241, 19, 20)">Nabs</text>
+<text transform="translate(63,817)" font-size="8" style="fill:rgb(247, 254, 0)">&amp;#39;Cash</text>
+<text transform="translate(436,778)" font-size="8" style="fill:rgb(233, 233, 18)">Jobs&amp;#39;</text>
+<text transform="translate(846,505)" font-size="8" style="fill:rgb(4, 53, 251)">Batters</text>
+<text transform="translate(697,214)" font-size="8" style="fill:rgb(246, 74, 75)">Uttarakhand&amp;#39;s</text>
+<text transform="translate(234,406)" font-size="8" style="fill:rgb(204, 11, 46)">Uttarkashi,</text>
+<text transform="translate(310,550)" font-size="8" style="fill:rgb(5, 53, 255)">Section</text>
+<text transform="translate(63,323) rotate(-90)" font-size="8" style="fill:rgb(251, 0, 3)">144</text>
+<text transform="translate(33,711)" font-size="8" style="fill:rgb(253, 253, 244)">Imposed</text>
+<text transform="translate(496,403) rotate(-90)" font-size="8" style="fill:rgb(254, 0, 2)">Purola</text>
+<text transform="translate(301,739)" font-size="8" style="fill:rgb(232, 227, 21)">Battles</text>
+<text transform="translate(817,706) rotate(-90)" font-size="8" style="fill:rgb(227, 232, 16)">Unrest</text>
+<text transform="translate(41,470)" font-size="8" style="fill:rgb(188, 191, 213)">Stands</text>
+<text transform="translate(759,650)" font-size="8" style="fill:rgb(98, 116, 129)">Jawan</text>
+<text transform="translate(939,666)" font-size="8" style="fill:rgb(241, 242, 39)">Seeking</text>
+<text transform="translate(627,512)" font-size="8" style="fill:rgb(5, 53, 255)">Justice</text>
+<text transform="translate(140,321)" font-size="8" style="fill:rgb(253, 0, 1)">Camera</text>
+<text transform="translate(609,771)" font-size="8" style="fill:rgb(241, 239, 24)">Wife&amp;#39;s</text>
+<text transform="translate(806,633)" font-size="8" style="fill:rgb(5, 53, 247)">Horrific</text>
+<text transform="translate(305,642) rotate(-90)" font-size="8" style="fill:rgb(3, 54, 252)">in</text>
+<text transform="translate(684,550)" font-size="8" style="fill:rgb(4, 53, 255)">Public</text>
+<text transform="translate(825,715) rotate(-90)" font-size="8" style="fill:rgb(8, 53, 226)">&amp;#39;Pakistan&amp;#39;s</text>
+<text transform="translate(594,275) rotate(-90)" font-size="8" style="fill:rgb(248, 3, 1)">Ambani&amp;#39;</text>
+<text transform="translate(50,728)" font-size="8" style="fill:rgb(241, 244, 19)">Lauds</text>
+<text transform="translate(386,231)" font-size="8" style="fill:rgb(247, 8, 9)">Schools</text>
+<text transform="translate(750,825)" font-size="8" style="fill:rgb(246, 252, 4)">Shehbaz</text>
+<text transform="translate(171,561)" font-size="8" style="fill:rgb(7, 55, 248)">Sharif</text>
+<text transform="translate(371,521)" font-size="8" style="fill:rgb(5, 53, 255)">Mayhem,</text>
+<text transform="translate(225,305)" font-size="8" style="fill:rgb(254, 0, 3)">&amp;#39;Mend</text>
+</svg>

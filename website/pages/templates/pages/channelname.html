@@ -1,11 +1,621 @@
-{% load static %}
-
+{% include "header.html" %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <script src="{% static '/js/htmx.min.js' %}"></script>
-    
-    
+    <style>
+        .apexcharts-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            overflow: auto;
+            padding: 0 10px;
+        }
+
+        .apexcharts-legend-series {
+            cursor: pointer;
+            line-height: normal;
+            display: flex;
+            align-items: center;
+            margin: 2px 5px;
+        }
+
+        .apexcharts-legend-text {
+            position: relative;
+            font-size: 12px;
+            font-weight: 400;
+            font-family: Helvetica, Arial, sans-serif;
+            color: rgb(55, 61, 63);
+        }
+
+        .apexcharts-legend-marker {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-right: 3px;
+            border-style: solid;
+            height: 12px;
+            width: 12px;
+            left: 0px;
+            top: 0px;
+            border-width: 0px;
+            border-color: rgb(255, 255, 255);
+            border-radius: 12px;
+        }
+    </style>
+
+
+
+    <title>Aaj Tak Profile</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-<embed id="svg" src="{% static 'function/clouds/' %}{{ channel }}.svg" >
+<body class="bg-gray-800 text-white font-sans p-5">
 
-   
+
+    <div class="flex items-center p-5 bg-gray-900 rounded shadow-lg">
+        <a href="{% url 'story' channel_name=channel.name %}">
+            <img class="w-20 h-20 rounded-full mr-5 object-cover border-4 " src="{{ channel.logo.url }}" alt="{{ channel.name }} Profile Image">
+        </a>
+        <div class="flex-1 w-full">
+            <h2 class="text-lg font-bold mb-1 text-white">{{ channel.name }}</h2>
+            <p class="text-sm text-white mb-2">{{ channel.tagline }}</p>
+            <div class="flex text-sm text-white space-x-4 lg:flex-row lg:space-x-0">
+                <div class="flex items-center lg:mr-0">
+                    <i class="fab fa-youtube text-lg mr-1"></i>
+                    <p class="text-sm text-white font-weight-bold">{{ channel.subscribers|default:"0" }}</p>
+                </div>
+                <div class="flex items-center lg:mr-0">
+                    <i class="fab fa-twitter text-lg mr-1"></i>
+                    <p class="text-sm text-white font-weight-bold">{{ channel.twitter_followers|default:"0" }}</p>
+                </div>
+                <div class="flex items-center lg:mr-0">
+                    <i class="fab fa-facebook text-lg mr-1"></i>
+                    <p class="text-sm text-white font-weight-bold">N/A</p> <!-- Facebook followers field is not provided -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-gray-900 p-5 rounded shadow-lg mt-3">
+        <h3 class=" text-sm mb-3 opacity-90">Political Spectrum</h3>
+        <div class="relative w-full max-w-md mx-auto">
+            <div class="absolute left-0 right-0 h-0.5 bg-white opacity-80"></div>
+            <div id="chartPoint" class="absolute top-1/2 -mt-5 -ml-3 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></div>
+            <div class="flex justify-between mt-3 text-sm text-white">
+                <span>Left</span>
+                <span>Center</span>
+                <span>Right</span>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="flex justify-between items-center p-4 mt-3 bg-gray-900 rounded-lg shadow-md">
+        <div class="flex items-center space-x-2 text-white">
+            <div>
+                <i class="fab fa-youtube text-lg"></i>
+            </div>
+            <div>
+                <p class="text-sm font-semibold">Ranking:</p>
+                <p class="text-xs">{{ channel.youtube_rank|default:"0" }}</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-2 text-white">
+            <div>
+                <i class="far fa-newspaper text-lg"></i>
+            </div>
+            <div>
+                <p class="text-sm font-weight-light">Fake News</p>
+                <p class="text-sm font-semibold text-bold">Low</p> <!-- Please replace this with actual data -->
+            </div>
+        </div>
+        <div class="flex items-center space-x-2 text-white">
+            <div>
+                <i class="fas fa-check-circle text-lg"></i>
+            </div>
+            <div>
+                <p class="text-sm font-weight-light">Credibility</p>
+                <p class="text-sm font-semibold text-bold">High</p> <!-- Please replace this with actual data -->
+            </div>
+        </div>
+    </div>
+    <!-- ... -->
+    
+    <!-- ... -->
+    
+    <div class="bg-gray-900 p-5 rounded shadow-lg mt-3">
+        <h3 class="text-lg font-bold mb-3">About {{ channel.name }}</h3>
+        <div class="overflow-x-auto">
+            <table class="w-full text-xs md:text-sm text-gray-400 divide-y divide-gray-600">
+                <!-- ... -->
+                <tr>
+                    <th class="px-3 py-2 bg-gray-700 font-semibold text-left">Official Website</th>
+                    <td class="px-3 py-2 bg-gray-800"><a href="{{ channel.official_website }}" class="text-blue-500 hover:underline" target="_blank">{{ channel.official_website }}</a></td>
+                </tr>
+                <tr>
+                    <th class="px-3 py-2 bg-gray-700 font-semibold text-left">YouTube</th>
+                    <td class="px-3 py-2 bg-gray-800"><a href="{{ channel.youtube_channel }}" class="text-blue-500 hover:underline" target="_blank">{{ channel.youtube_channel }}</a></td>
+                </tr>
+                <tr>
+                    <th class="px-3 py-2 bg-gray-700 font-semibold text-left">Twitter</th>
+                    <td class="px-3 py-2 bg-gray-800"><a href="{{ channel.twitter_handle }}" class="text-blue-500 hover:underline" target="_blank">{{ channel.twitter_handle }}</a></td>
+                </tr>
+                <tr>
+                    <th class="px-3 py-2 bg-gray-700 font-semibold text-left">Facebook</th>
+                    <td class="px-3 py-2 bg-gray-800"><a href="{{ channel.facebook_page }}" class="text-blue-500 hover:underline" target="_blank">{{ channel.facebook_page }}</a></td>
+                </tr>
+                <!-- ... -->
+            </table>
+        </div>
+    </div>
+    
+
+<div class="mt-3 p-5 rounded shadow-lg custom-chart">
+    <div>
+        <canvas id="topicPieChart"></canvas>
+    </div>
+    
+    <script>
+        const ctx = document.getElementById('topicPieChart').getContext('2d');
+    
+        const data = {
+            labels: [
+                {% for topic in topic_counts %}
+                    '{{ topic.topic }}'{% if not forloop.last %},{% endif %}
+                {% endfor %}
+                {% if fifth_topic %}
+                    , '{{ fifth_topic.topic }}'
+                {% endif %}
+            ],
+            datasets: [{
+                data: [
+                    {% for topic in topic_counts %}
+                        {{ topic.topic_count }}{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                    {% if fifth_topic %}
+                        , {{ fifth_topic.topic_count }}
+                    {% endif %}
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(255, 255, 255, 1)',
+                    'rgba(255, 255, 255, 1)',
+                    'rgba(255, 255, 255, 1)',
+                    'rgba(255, 255, 255, 1)',
+                    'rgba(255, 255, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+    
+        const config = {
+            type: 'pie',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: 'white',
+                            boxWidth: 20,
+                            boxHeight: 20,
+                            usePointStyle: true,
+                            pointStyle: 'circle',
+                            backgroundColor: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Top 5 Topics in the Last 48 Hours',
+                        color: 'white'
+                    }
+                }
+            },
+        };
+    
+        new Chart(ctx, config);
+    </script>
+    
+
+    <div id="modiVSrahul"></div>
+
+    <script>
+        const historicalData = JSON.parse('{{ historical_counts | escapejs | safe }}');
+       
+        const datesModiRahul = Object.keys(historicalData);
+        const modiCounts = datesModiRahul.map(date => historicalData[date]['Modi']);
+        const rahulCounts = datesModiRahul.map(date => historicalData[date]['Rahul Gandhi']);
+    
+        var options = {
+            series: [{
+                name: "Modi",
+                data: modiCounts
+            },
+            {
+                name: "Rahul Gandhi",
+                data: rahulCounts
+            }],
+            chart: {
+                type: 'area',
+                height: 350,
+                toolbar: {
+                    tools: {
+                        zoom: false, // Disable zoom symbols
+                    },
+                    download: {
+                        theme: 'dark', // Set download section theme to dark
+                    },
+                },
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            xaxis: {
+                categories: datesModiRahul,
+                labels: {
+                    style: {
+                        colors: 'white'
+                    },
+                    datetimeFormatter: {
+                        year: 'yyyy',
+                        month: 'MMM',
+                        day: 'dd',
+                        hour: 'HH:mm',
+                    }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: 'white'
+                    }
+                }
+            },
+            title: {
+                text: 'Modi vs Rahul',
+                align: 'left',
+                style: {
+                    color: 'white'
+                }
+            },
+            tooltip: {
+                x: {
+                    format: 'd MMM'
+                },
+                theme: 'dark',
+                style: {
+                    background: 'gray',
+                    color: 'white'
+                }
+            },
+            colors: ['#ff6361', '#58508d'],  // Set line colors
+            legend: {
+            labels: {
+                colors: '#ffffff'  // Set legend label color to white
+            }
+        }
+        };
+    
+        var chart = new ApexCharts(document.querySelector("#modiVSrahul"), options);
+        chart.render();
+    </script>
+
+    <div id="religious-terms-chart"></div>
+
+    
+
+
+    <script>
+        var historicalCounts = JSON.parse('{{ historical_counts|escapejs }}');
+      
+        var datesReligious = Object.keys(historicalCounts);
+        var religiousData = datesReligious.map(date => historicalCounts[date]['Religious'] || 0);
+      
+        var options = {
+          chart: {
+            type: 'bar',
+            height: 350,
+            foreColor: '#fff',
+          },
+          series: [{
+            name: 'Religious Terms',
+            data: religiousData
+          }],
+          xaxis: {
+            categories: datesReligious,
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: '55%',
+              endingShape: 'rounded'
+            },
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+          },
+          yaxis: {
+            title: {
+              text: '% of religious terms'
+            }
+          },
+          fill: {
+            opacity: 1
+          },
+          tooltip: {
+            theme: 'dark', // Sets tooltip theme to dark
+            y: {
+              formatter: function (val) {
+                return val + " %"
+              }
+            }
+          }
+        }
+      
+        var chart = new ApexCharts(document.querySelector("#religious-terms-chart"), options);
+        chart.render();
+      </script>
+
+      <div id="frequencyChart"></div>
+      
+      <script>
+        const uploadFrequencyData = JSON.parse('{{ upload_frequency|escapejs }}');
+    
+        const dates = [];
+        const frequencies = [];
+    
+        const today = new Date();
+        for (let i = 6; i >= 0; i--) {
+            const date = new Date(today);
+            date.setDate(date.getDate() - i);
+            const formattedDate = date.toLocaleDateString('en-US', { day: 'numeric', month: 'short' });
+            dates.push(formattedDate);
+            frequencies.push(uploadFrequencyData[i]);
+        }
+    
+        const frequencyChartOptions = {
+            chart: {
+                type: 'line',
+                height: 350,
+                toolbar: {
+                    show: false
+                },
+                foreColor: '#ffffff',
+                animations: {
+                    enabled: false
+                }
+            },
+            series: [
+                {
+                    name: 'Upload Frequency',
+                    data: frequencies
+                }
+            ],
+            xaxis: {
+                categories: dates,
+                labels: {
+                    format: 'dd MMM',
+                    style: {
+                        colors: '#ffffff'
+                    }
+                },
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: '#ffffff'
+                    }
+                },
+                title: {
+                    text: 'Video Upload Per Day', // Add the title on the left vertical side
+                    style: {
+                        color: '#ffffff'
+                    }
+                }
+            },
+            theme: {
+                mode: 'dark',
+                
+            }
+        };
+    
+        const frequencyChart = new ApexCharts(document.querySelector('#frequencyChart'), frequencyChartOptions);
+        frequencyChart.render();
+    </script>
+      
+      
+
+      
+      
+
+
+
+</div>      
+
+<div class="max-w-md mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-4 text-white">
+    <div class="p-4 md:p-8">
+        <h2 class="text-base md:text-lg leading-6 font-medium text-gray-300 mb-2 md:mb-4">Latest Videos</h2>
+        <ul class="space-y-2 md:space-y-4">
+            {% for video in last_five_videos %}
+            <li class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="h-24 w-24">
+                        <img class="h-full w-full object-cover rounded" src="{{ video.thumbnail_url }}" alt="Video Thumbnail">
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-xs md:text-sm leading-5 font-medium text-white">{{ video.title }}</h3>
+                    <p class="text-xs text-gray-400">{{ video.channel.name }}</p>
+                    <p class="text-xs text-gray-400">{{ video.published_date }}</p>
+                </div>
+            </li>
+            {% empty %}
+            <p class="text-gray-400">No videos available.</p>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const ideologyScore = {{ channel.politcial_spectrum|default:"5" }};
+        const chartPoint = document.getElementById("chartPoint");
+
+        // Normalize the ideology score to a value between 0 and 100
+        const normalizedScore = (ideologyScore - 1) * 100 / 9;
+
+        // Set the position of the chart point based on the normalized score
+        chartPoint.style.left = `${normalizedScore}%`;
+    });
+</script>
+
+
+<script>
+    // Function to generate an array of labels for the last 10 days
+    function getLast10Days() {
+        const today = new Date();
+        const days = [];
+        for (let i = 9; i >= 0; i--) {
+            const day = new Date(today);
+            day.setDate(today.getDate() - i);
+            const formattedDay = day.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            days.push(formattedDay);
+        }
+        return days;
+    }
+</script>
+
+
+
+
+<!-- script for upload frequency -->
+{% comment %} <script>
+    // Upload Frequency
+    const aajTakData = {
+        labels: getLast10Days(),
+        datasets: [{
+            label: 'Video Upload Frequency',
+            data: [12, 19, 3, 5, 2, 3, 8, 10, 15, 20], // Update this array with the actual data points for the news frequency
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    const aajTakConfig = {
+        type: 'bar',
+        data: aajTakData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+
+    const aajTakChartElement = document.getElementById('aajTakChart');
+
+    const aajTakChart = new Chart(aajTakChartElement, aajTakConfig);
+
+    function getLastSixMonths() {
+  const now = new Date();
+  const months = [];
+  for (let i = now.getMonth(); i >= now.getMonth() - 6; i--) {
+    months.push(i);
+  }
+  return months;
+}
+</script>
+
+<script>
+    //fakenewsdata
+    const fakeNewsData = {
+        labels: getLastSixMonths(),
+        datasets: [{
+            label: 'Fake News Instances',
+            data: [5, 3, 10, 8, 4, 6], // Update this array with the actual data points for the fake news instances
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 2,
+            tension: 0.4
+        }]
+    };
+
+
+    const fakeNewsConfig = {
+        type: 'bubble',
+        
+        data: fakeNewsData, 
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    position: 'left'
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true
+                }
+            },
+            elements: {
+                bar: {
+                    borderRadius: 5
+                }
+            },
+            layout: {
+                padding: 20
+            }
+        }
+    };
+
+    const fakeNewsChartElement = document.getElementById('fakeNewsChart');
+
+    const fakeNewsChart = new Chart(fakeNewsChartElement, fakeNewsConfig);
+
+</script> {% endcomment %}
+
+
+
+
+
+</body>
+
+{% include 'footer.html' %}
+</html>

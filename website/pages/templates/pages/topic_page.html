@@ -1,0 +1,242 @@
+{% include 'header.html' %}
+
+
+    
+    <title>{{ title }}</title>
+
+    <body class="lg:max-w-[1200px]">
+        <div class="custom-font">
+            <div id="stickyContainer" class="flex flex-col my-5 py-5 align-middle items-center w-screen justify-center">
+                <h1 id="title" class="card-title align-middle  text-white text-xl font-bold px-5 text-ellipsis">#{{ title }}</h1>
+            </div>
+            
+            <!-- Rest of your content -->
+        </div>
+    
+        <script>
+            window.addEventListener('scroll', function() {
+                var stickyContainer = document.getElementById('stickyContainer');
+                var titleElement = document.getElementById('title');
+                var headerHeight = document.querySelector('header').offsetHeight;
+    
+                if (window.pageYOffset > headerHeight) {
+                    stickyContainer.classList.add('fixed', 'top-0');
+                    stickyContainer.classList.add('right-0'); // Add class for right alignment
+                    stickyContainer.classList.add('transform', 'translate-y-2/4', 'translate-x-2/4'); // Add classes for top middle position
+                    titleElement.classList.add('bg-red-500',  'text-[10px]', 'pr-36', 'z-51', 'py-3'); // Add class for red background color
+                } else {
+                    stickyContainer.classList.remove('fixed', 'top-0', 'right-0');
+                    stickyContainer.classList.remove('transform', 'translate-y-2/4', 'translate-x-2/4'); // Remove classes for top middle position
+                    titleElement.classList.remove('bg-red-500', 'text-[10px]', 'pr-36', 'z-51', 'py-3'); // Remove class for red background color
+                }
+            });
+        </script>
+   
+            
+    
+        <div class="md:flex lg:flex-row lg:py-5">
+            <div class=" mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-4 text-white lg:wfull">
+                <div class="flex flex-col md:flex-row text-2xs md:text-sm w-full ">
+                    <div class="align-baseline p-8 border-b md:border-b-0 md:border-r text-center md:text-left display-font font-light ">
+                        <div class="text-base text-sm leading-6 font-medium text-gray-400  ">
+                            First appeared on
+                        </div>
+                        <div class="md:text-2xl leading-7 font-bold text-indigo-400">
+                            {{ first_appeared_date|date:"F d, Y" }}
+                        </div>
+                    </div>
+                    
+                    <div class="p-8 w-full mx-auto justify-center items-center">
+                        <img src="{{ last_video_thumbnail_url }}" alt="Last Video Thumbnail" class=" object-cover h-48 w-96  rounded-lg ">
+    
+                        <h2 class="mt-1 text-base md:text-lg leading-tight font-medium text-white">{{ title }}</h2>
+                        <p class="text-xs md:text-base mt-2 text-gray-400">{{ synopsis }}</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="max-w-md mx-auto rounded-xl overflow-hidden md:max-w-2xl mt-4 pb-2 text-white  ">
+                <div class="p-4 md:p-8">
+                    <h2 class="text-base md:text-lg leading-6 font-medium text-gray-300 mb-2 md:mb-4">Top Channels Covering "{{ title }}"</h2>
+                    <p class="text-sm md:text-base leading-6 text-gray-400 mb-2 md:mb-4">Total videos for this topic: {{ topic_count }}</p>
+                    <ul class="space-y-2 md:space-y-4">
+                        {% for channel in top_channels %}
+                            {% if channel.video_count > 0 %}
+                                {% with rank=forloop.counter %}
+                                    <li class="flex items-center">
+                                        <div class="flex-shrink-0">
+                                            <span class="inline-block h-6 w-6 md:h-8 md:w-8 rounded-full overflow-hidden bg-gray-700 text-white text-sm font-medium text-center">{{ rank }}</span>
+                                        </div>
+                                        <div class="flex items-center ml-2 md:ml-4">
+                                            <img class="h-6 w-6 md:h-10 md:w-10 rounded-full" src="{{ channel.logo.url }}" alt="{{ channel.name }} logo">
+                                            <a href="{% url 'channel_name' slug=channel.slug %}" class="ml-2 text-xs md:text-sm leading-6 font-medium text-white underline hover:text-blue-500">{{ channel.name }}</a>
+                                        </div>
+                                        <div class="ml-auto text-sm md:text-base leading-6 text-gray-400">{{ channel.video_count }}</div>
+                                    </li>
+                                {% endwith %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+            <div class="mx-auto rounded-xl shadow-md overflow-hidden lg:h-[60%]  m-4 ">
+            <div id="chart" class="w-full "></div>
+        </div>
+            <div class="fact-check-section bg-gray-800 rounded-xl shadow-md overflow-hidden   m-4 text-white lg:w-full mx-auto">
+                <h2 class="p-4 text-base md:text-lg leading-6 font-medium text-gray-300">Recent Fact Checks</h2>
+                <ul class="fact-check-list text-xs p-4">
+                    <!-- Fact checks will be inserted here by JavaScript -->
+                </ul>
+            </div>
+            <div class="max-w-md mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden m-4 text-white">
+                <div class="p-4 md:p-8">
+                    <h2 class="text-base md:text-lg leading-6 font-medium text-gray-300 mb-2 md:mb-4">Latest Videos</h2>
+                    <ul class="space-y-2 md:space-y-4">
+                        {% for video in latest_videos %}
+                            <li class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="h-24 w-24">
+                                        <img class="h-full w-full object-cover rounded" src="{{ video.thumbnail_url }}" alt="Video Thumbnail">
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-xs md:text-sm leading-5 font-medium text-white">{{ video.title }}</h3>
+                                    <p class="text-xs text-gray-400">{{ video.channel.name }}</p>
+                                    <p class="text-xs text-gray-400">{{ video.published_date }}</p>
+                                </div>
+                            </li>
+                        {% empty %}
+                            <p class="text-gray-400">No videos available.</p>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+    </body>
+    
+        <script>
+            // Fetch fact checks using AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/fact-check-view/?search_term={{ title }}', true);
+            xhr.onload = function() {
+                if (this.status >= 200 && this.status < 400) {
+                    // Success!
+                    var data = JSON.parse(this.response);
+                    var factChecks = data.fact_checks;
+                    var factCheckList = document.querySelector('.fact-check-list');
+
+                    if (factChecks.length === 0) {
+                        var noFactCheckMessage = document.createElement('p');
+                        noFactCheckMessage.textContent = 'No enough fact checks available on this topic.';
+                        factCheckList.appendChild(noFactCheckMessage);
+                    } else {
+                        factChecks.forEach(function(factCheck) {
+                            var listItem = document.createElement('li');
+                            listItem.className = 'fact-check-item bg-gray-700 rounded-lg shadow-md p-4 mb-4';
+
+                            var title = document.createElement('h3');
+                            title.className = 'text-sm mb-2 custom-font';
+                            var titleLink = document.createElement('a');
+                            titleLink.href = factCheck.claimReview[0].url;
+                            titleLink.textContent = factCheck.text;
+                            title.appendChild(titleLink);
+
+                            var rating = document.createElement('p');
+                            rating.className = 'text-sm display-font';
+                            rating.innerHTML = '<strong>Rating:</strong> ' + factCheck.claimReview[0].textualRating;
+
+                            listItem.appendChild(title);
+                            listItem.appendChild(rating);
+
+                            factCheckList.appendChild(listItem);
+                        });
+                    }
+                } else {
+                    // We reached our target server, but it returned an error
+                    console.error('Server returned an error');
+                }
+            };
+            xhr.onerror = function() {
+                // There was a connection error of some sort
+                console.error('Connection error');
+            };
+            xhr.send();
+
+         </script>
+        <script>
+            var options = {
+                chart: {
+                    type: 'area',
+                    foreColor: '#ffffff',
+                    zoom: {
+                        enabled: false
+                    },
+                    toolbar: {
+                        show: false
+                    },
+                    theme: {
+                        mode: 'dark',
+                    },
+                },
+                title: {
+                    text: 'Popularity',
+                    align: 'left',
+                    style: {
+                        color: '#ffffff'
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 2,
+                },
+                series: [{
+                    name: 'Topic Popularity',
+                    data: {{ daily_counts_json | safe }} // Django will replace the placeholder with actual data
+                }],
+                xaxis: {
+                    categories: {{ day_labels | safe }}, // Django will replace with actual data
+                    labels: {
+                        style: {
+                            colors: '#f9fafb'
+                        }
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Videos',
+                        style: {
+                            color: '#ffffff'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            colors: '#f9fafb'
+                        }
+                    }
+                },
+                grid: {
+                    borderColor: '#4A5568'
+                },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.7,
+                        opacityTo: 0.5,
+                        stops: [0, 90, 100]
+                    }
+                },
+            }
+
+            var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+            chart.render();
+        </script>
+    </div>
+</body>
+</html>
+{% include 'footer.html' %}

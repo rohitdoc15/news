@@ -1,0 +1,141 @@
+<footer class="bg-gray-900 rounded-lg shadow pb-2">
+  <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+    
+    <span class="text-sm text-gray-400 sm:text-center">
+      © 2023 <a href="https://flowbite.com/" class="hover:underline text-white">FoggyMedia</a>. All Rights Reserved.
+    </span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-400">
+      <li>
+        <a href="#" class="mr-4 hover:underline md:mr-6">About</a>
+      </li>
+      <li>
+        <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+      </li>
+      <li>
+        <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+      </li>
+      <li>
+        <a href="#" class="hover:underline">Contact</a>
+      </li>
+    </ul>
+  </div>
+
+
+     
+
+<title>Analytics Layout</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Geologica&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+    .custom-font {
+        font-family: 'Geologica', sans-serif;
+
+    }
+    .display-font {
+        font-family: 'Roboto', sans-serif;
+    }
+</style>
+<script>
+// Wait for the DOM to load
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the search input field and search results container
+  const searchInput = document.getElementById("search-input");
+  const searchResults = document.getElementById("search-results");
+
+  // Attach an event listener to the search input field
+  searchInput.addEventListener("input", function () {
+    // Get the search query
+    const query = searchInput.value.trim();
+
+    // Clear the search results container
+    searchResults.innerHTML = "";
+
+    // Make an AJAX request to fetch the search results
+    if (query.length > 0) {
+      fetch("/check_channel/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRFToken": "{{ csrf_token }}", // Include the CSRF token here
+        },
+        body: "search=" + encodeURIComponent(query),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Process the search results
+          if (data.results && data.results.length > 0) {
+            // Create a dropdown menu for the search results
+            const dropdownMenu = document.createElement("ul");
+            dropdownMenu.classList.add("dropdown-menu");
+
+            // Sort the results based on maximum video count
+            data.results.sort((a, b) => {
+              const aMaxCount = Math.max(
+                ...a.topics.map((topic) => topic.video_count)
+              );
+              const bMaxCount = Math.max(
+                ...b.topics.map((topic) => topic.video_count)
+              );
+              return bMaxCount - aMaxCount;
+            });
+
+            // Loop through the results and create dropdown items
+            for (const result of data.results) {
+              if (result.name && result.slug) {
+                // Create a dropdown item for a news channel
+                const channelItem = document.createElement("li");
+                const channelLink = document.createElement("a");
+                channelLink.href = "/channel/" + result.slug + "/";
+                channelLink.innerHTML = `
+                  <img src="${result.logo}" alt="${result.name}" class="logo">
+                  <span class="channel-name">${result.name}</span>
+                `;
+                channelItem.appendChild(channelLink);
+                dropdownMenu.appendChild(channelItem);
+              }
+
+              // Sort the topics based on video count
+              result.topics.sort((a, b) => b.video_count - a.video_count);
+
+              // Loop through the topics and create dropdown items
+              for (const topic of result.topics) {
+                const topicItem = document.createElement("li");
+                const topicLink = document.createElement("a");
+                topicLink.href = "/topic/" + encodeURIComponent(topic.topic) + "/";
+                topicLink.innerHTML = `
+                  #${topic.topic}
+                  <div class="px-1"></div>
+                  <div class="inline-flex items-center rounded-lg bg-[#FF4560] opacity-80 px-2 py-1 text-xs font-medium">
+                    ${topic.video_count}
+                  </div>
+                `;                topicItem.appendChild(topicLink);
+                dropdownMenu.appendChild(topicItem);
+              }
+            }
+
+            // Append the dropdown menu to the search results container
+            searchResults.appendChild(dropdownMenu);
+
+            // Show the search results container
+            searchResults.style.display = "block";
+          } else {
+            // Hide the search results container if there are no results
+            searchResults.style.display = "none";
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    } else {
+      // Hide the search results container if the query is empty
+      searchResults.style.display = "none";
+    }
+  });
+});
+
+
+</script>
+
+</footer>

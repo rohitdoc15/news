@@ -1,12 +1,24 @@
 <header>
-{% load static %}
-{% load static tailwind_tags %}
+    {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+         
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+       
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+
+      
+      <script>
         // Initialize Swiper carousel
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
@@ -16,25 +28,17 @@
                 clickable: true,
             },
         });
-    </script>
-    {% tailwind_css %}
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics Layout</title>
-    {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-   
-    <style>
+      </script>
+      <script src="{% static '/js/htmx.min.js' %}"></script>
+      <style>
         /* Rest of your CSS styles */
-
+    
         /* Custom styles for Swiper carousel */
         .swiper-container {
             /* width: 100%;
             height: 120px;
             margin-top: 20px;
-            background-color: #222; */
+            background-color: ; */
         }
         .swiper-wrapper {
             display: flex;
@@ -50,11 +54,201 @@
             height: 80px;
             margin-right: 10px;
             border-radius: 50%;
-            background-color: #fff;
+            background-color: #000;
             font-size: 30px;
             color: #000;
-            border: 2px solid red; /* Updated border style */
+            border: 2px solid #FF4560; /* Updated border style */
         }
     </style>
-</head>
+    <style>
+        .custom-font {
+            font-family: 'Geologica', sans-serif;
+    
+        }
+        .display-font {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <style>
+      .search-results {
+        position: fixed;
+        z-index: 50;
+        background-color: #1a202c;
+        width: 100%;
+        left: 0;
+        padding: 1rem;
+        border-radius: 0 0 0.5rem 0.5rem;
+      }
+    
+      .search-results .dropdown-menu {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+    
+      .search-results .dropdown-menu li {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #e2e8f0;
+      }
+    
+      .search-results .dropdown-menu li:last-child {
+        border-bottom: none;
+      }
+    
+      .search-results .dropdown-menu a {
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+    
+      .search-results .dropdown-menu .logo {
+        width: 24px;
+        height: 24px;
+        margin-right: 0.5rem;
+      }
+    
+      .search-results .dropdown-menu .channel-name {
+        margin-right: 0.5rem;
+      }
+    
+      .search-results .dropdown-menu a:hover {
+        background-color: blue;
+      }
+      .search-results {
+        /* ... */
+        display: none; /* Initially hide the search results */
+      }
+      .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+    
+      .hamburger-menu {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .search-container {
+        display: flex;
+        align-items: center;
+      }
+    
+      .search-input {
+        flex: 1;
+      }
+    
+      .logo-container {
+        margin-left: .25rem;
+        margin-right: .25rem;
+        
+      }
+    
+      .logo {
+        width: 100px; /* Adjust the width as needed */
+        height: auto;
+        padding: -0.5rem;
+      }
+    
+    </style>
+
+   
+    <nav class=" fixed top-0 z-10 backdrop-filter backdrop-blur-lg dark:border-slate-50/[0.06] bg-white/100 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <div class="flex ">
+            <a href="/" class="logo-link">
+            <img class="md:w-48" src="{% static 'images/foogymedia_logo.png' %}" alt="Logo" > </a>
+          </div>
+    
+          <!-- Search Input -->
+          <div class="flex items-center md:flex-grow md:w-full">
+            <div class="relative ">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="w-5 h-5 text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <input type="text" id="search-input" name="search" autocomplete="off" placeholder="Search News channel/topic..." required class="search-input bg-transparent border-b-2 border-b-gray-800 text-white py-2 pl-8 md:w-auto md:max-w-xs focus:outline-none focus:bg-gray-800 placeholder:text-xs">
+          
+          <div id="search-results" class="search-results "></div>
+            </div>
+          </div>
+    
+          <!-- Hamburger Menu -->
+          <div class="flex items-center -mr-2 sm:hidden">
+            <button id="mobileMenuButton"
+              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+              aria-label="Open main menu"
+            >
+              <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      
+    
+      <!-- Mobile Menu (hidden by default) -->
+      <div id="mobileMenu" class="hidden sm:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <!-- Mobile Menu Items -->
+          <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+        </div>
+      </div>
+    </nav>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const mobileMenuButton = document.getElementById("mobileMenuButton");
+        const mobileMenu = document.getElementById("mobileMenu");
+    
+        mobileMenuButton.addEventListener("click", function() {
+          mobileMenu.classList.toggle("hidden");
+        });
+      });
+    </script>
+
+ 
+
+
+
+        
+        {% comment %} <form id="search-form" class="relative z-10">
+          <div class="search-container bg-gray-900 h-16 w-full fixed top-0 z-10 backdrop-filter backdrop-blur-lg dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
+
+           
+            
+            <div class="logo-container bg-transparent">
+              <a href="/" class="logo-link">
+                <img src="{% static 'images/foogymedia_logo.png' %}" alt="Logo" class="logo">
+              </a>
+            </div>
+            <input type="text" id="search-input" name="search" autocomplete="off" placeholder="Search News channel/topic..."
+              required class="search-input bg-gray-900 text-white rounded-md py-2 px-4 md:w-auto md:max-w-xs focus:outline-none focus:bg-gray-800 placeholder:text-sm">
+          </div>
+          <div id="search-results" class="search-results fixed bg-fixed -mt-4 "></div>
+          
+        </form> {% endcomment %}
+
+       
+        
+        <div class="content-section mt-16 ">
+        
+          
 </header>
+<body class="bg-gradient-to-b from-black to-gray-800 bg-fixed lg:max-w-[1200px] lg:mx-auto "></body>

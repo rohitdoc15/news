@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import NewsChannel, TrendingTopic , Video , sarso, petroluem
+
+admin.site.register(NewsChannel)
+admin.site.register(TrendingTopic)
+admin.site.register(Video)
+admin.site.register(sarso)
+admin.site.register(petroluem)

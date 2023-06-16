@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #111827;
+                color: #F9FAFB;
+                font-family: 'Inter', sans-serif;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .container {
+            max-width: 800px; /* Adjust the container width as needed */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #1F2937;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            padding: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .channel-rank {
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .card-content {
+            margin-bottom: 0.5rem;
+            color: #f9fafb;
+        }
+
+        .channel-ranking {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .channel-name {
+            font-weight: bold;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+        }
+
+        .channel-logo {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+        }
+
+        .channel-count {
+            background-color: #4A5568;
+            color: #ffffff;
+            font-size: 0.875rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 480px) {
+            .card-title {
+                font-size: 1.25rem;
+            }
+
+            .channel-logo {
+                width: 16px;
+                height: 16px;
+                margin-right: 0.25rem;
+            }
+
+            .channel-count {
+                font-size: 0.75rem;
+            }
+
+            .card-content {
+                font-size: 0.875rem;
+            }
+
+            .card-content-mobile {
+                font-size: 0.75rem;
+            }
+
+            .fact-check-list h3 {
+                font-size: 0.75rem; /* Adjust the font size to match the synopsis */
+                font-weight: 200 ;
+                margin-bottom: 0.5rem;
+                color: #ffffff;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <body>
+        <div class="container">
+            <h1 class="card-title">#{{ title }}</h1>
+    
+            <div class="max-w-md mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-4 text-white">
+                <div class="flex flex-col md:flex-row">
+                    <div class="p-8 border-b md:border-b-0 md:border-r text-center md:text-left">
+                        <div class="text-base md:text-sm leading-6 font-medium text-gray-400">
+                            First appeared on
+                        </div>
+                        <div class="mt-1 text-lg md:text-2xl leading-7 font-bold text-indigo-400">
+                            {{ first_appeared_date|date:"F d, Y" }}
+                        </div>
+                    </div>
+                    <div class="p-8 w-full">
+                        <img src="{{ last_video_thumbnail_url }}" alt="Last Video Thumbnail" class="w-full rounded-lg">
+    
+                        <h2 class="mt-1 text-base md:text-lg leading-tight font-medium text-white">{{ title }}</h2>
+                        <p class="text-xs md:text-base mt-2 text-gray-400">{{ synopsis }}</p>
+                    </div>
+                </div>
+            </div>
+            {% if related_topics %}
+            <div class=" text-white rounded-lg shadow-lg p-4 max-w-md mx-auto bg-gray-800 md:max-w-2xl">
+              <h2 class="text-sm font-bold mb-2">Related Topics</h2>
+              <div class="text- flex gap-3 overflow-x-auto">
+                {% for topic in related_topics %}
+                <div class="flex items-center justify-between py-2 gap-3  bg-gray-900 rounded-lg px-2 shadow-lg">
+                  <a href="{% url 'topic_details' topic=topic.topic %}" class="flex-nowrap">
+                    <button class="w-auto text-left text-white flex-1" style="font-size:10px; white-space:nowrap;">
+                      {{ topic.topic }}
+                    </button>
+                  </a>
+                  <span class="bg-blue-500 text-white rounded-lg px-3 py-1 text-xs flex-shrink-0">{{ topic.video_count }}</span>
+                </div>
+                {% endfor %}
+              </div>
+              
+            </div>
+          {% endif %}
+          
+
+            
+    
+            <div class="max-w-md mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-4 text-white">
+                <div class="p-4 md:p-8">
+                    <h2 class="text-base md:text-lg leading-6 font-medium text-gray-300 mb-2 md:mb-4">Top Channels Covering "{{ title }}"</h2>
+                    <p class="text-sm md:text-base leading-6 text-gray-400 mb-2 md:mb-4">Total videos for this topic: {{ topic_count }}</p>
+                    <ul class="space-y-2 md:space-y-4">
+                        {% for channel in top_channels %}
+                            {% if channel.video_count > 0 %}
+                                {% with rank=forloop.counter %}
+                                    <li class="flex items-center">
+                                        <div class="flex-shrink-0">
+                                            <span class="inline-block h-6 w-6 md:h-8 md:w-8 rounded-full overflow-hidden bg-gray-700 text-white text-sm font-medium text-center">{{ rank }}</span>
+                                        </div>
+                                        <div class="flex items-center ml-2 md:ml-4">
+                                            <img class="h-6 w-6 md:h-10 md:w-10 rounded-full" src="{{ channel.logo.url }}" alt="{{ channel.name }} logo">
+                                            <a href="{% url 'channel_name' slug=channel.slug %}" class="ml-2 text-xs md:text-sm leading-6 font-medium text-white underline hover:text-blue-500">{{ channel.name }}</a>
+                                        </div>
+                                        <div class="ml-auto text-sm md:text-base leading-6 text-gray-400">{{ channel.video_count }}</div>
+                                    </li>
+                                {% endwith %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+    
+            <div id="chart"></div>
+            <div class="fact-check-section bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl mx-auto m-4 text-white">
+                <h2 class="p-4 text-base md:text-lg leading-6 font-medium text-gray-300">Recent Fact Checks</h2>
+                <ul class="fact-check-list text-xs p-4">
+                    <!-- Fact checks will be inserted here by JavaScript -->
+                </ul>
+            </div>
+            <div class="max-w-md mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-4 text-white">
+                <div class="p-4 md:p-8">
+                    <h2 class="text-base md:text-lg leading-6 font-medium text-gray-300 mb-2 md:mb-4">Latest Videos</h2>
+                    <ul class="space-y-2 md:space-y-4">
+                        {% for video in latest_videos %}
+                            <li class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="h-24 w-24">
+                                        <img class="h-full w-full object-cover rounded" src="{{ video.thumbnail_url }}" alt="Video Thumbnail">
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-xs md:text-sm leading-5 font-medium text-white">{{ video.title }}</h3>
+                                    <p class="text-xs text-gray-400">{{ video.channel.name }}</p>
+                                    <p class="text-xs text-gray-400">{{ video.published_date }}</p>
+                                </div>
+                            </li>
+                        {% empty %}
+                            <p class="text-gray-400">No videos available.</p>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+    </body>
+    
+        <script>
+            // Fetch fact checks using AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/fact-check-view/?search_term={{ title }}', true);
+            xhr.onload = function() {
+                if (this.status >= 200 && this.status < 400) {
+                    // Success!
+                    var data = JSON.parse(this.response);
+                    var factChecks = data.fact_checks;
+                    var factCheckList = document.querySelector('.fact-check-list');
+
+                    if (factChecks.length === 0) {
+                        var noFactCheckMessage = document.createElement('p');
+                        noFactCheckMessage.textContent = 'No enough fact checks available on this topic.';
+                        factCheckList.appendChild(noFactCheckMessage);
+                    } else {
+                        factChecks.forEach(function(factCheck) {
+                            var listItem = document.createElement('li');
+                            listItem.className = 'fact-check-item bg-gray-700 rounded-lg shadow-md p-4 mb-4';
+
+                            var title = document.createElement('h3');
+                            title.className = 'text-lg font-bold mb-2';
+                            var titleLink = document.createElement('a');
+                            titleLink.href = factCheck.claimReview[0].url;
+                            titleLink.textContent = factCheck.text;
+                            title.appendChild(titleLink);
+
+                            var rating = document.createElement('p');
+                            rating.className = 'text-sm font-semibold';
+                            rating.innerHTML = '<strong>Rating:</strong> ' + factCheck.claimReview[0].textualRating;
+
+                            listItem.appendChild(title);
+                            listItem.appendChild(rating);
+
+                            factCheckList.appendChild(listItem);
+                        });
+                    }
+                } else {
+                    // We reached our target server, but it returned an error
+                    console.error('Server returned an error');
+                }
+            };
+            xhr.onerror = function() {
+                // There was a connection error of some sort
+                console.error('Connection error');
+            };
+            xhr.send();
+
+         </script>
+        <script>
+            var options = {
+                chart: {
+                    type: 'area',
+                    foreColor: '#ffffff',
+                    zoom: {
+                        enabled: false
+                    },
+                    toolbar: {
+                        show: false
+                    },
+                    theme: {
+                        mode: 'dark',
+                    },
+                },
+                title: {
+                    text: 'Popularity',
+                    align: 'left',
+                    style: {
+                        color: '#ffffff'
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 2,
+                },
+                series: [{
+                    name: 'Topic Popularity',
+                    data: {{ daily_counts_json | safe }} // Django will replace the placeholder with actual data
+                }],
+                xaxis: {
+                    categories: {{ day_labels | safe }}, // Django will replace with actual data
+                    labels: {
+                        style: {
+                            colors: '#f9fafb'
+                        }
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Videos',
+                        style: {
+                            color: '#ffffff'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            colors: '#f9fafb'
+                        }
+                    }
+                },
+                grid: {
+                    borderColor: '#4A5568'
+                },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.7,
+                        opacityTo: 0.5,
+                        stops: [0, 90, 100]
+                    }
+                },
+            }
+
+            var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+            chart.render();
+        </script>
+    </div>
+</body>
+</html>
